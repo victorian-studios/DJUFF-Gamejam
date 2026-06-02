@@ -1,0 +1,203 @@
+[gd_scene format=3 uid="uid://bsughc1oaix5d"]
+
+[ext_resource type="Texture2D" uid="uid://b0rhvxi01emtu" path="res://Menu/Images/background_menu.png" id="1_1lm7l"]
+[ext_resource type="Script" uid="uid://drbkwcmbu3w2f" path="res://Menu/Scripts/menu.gd" id="1_3tbja"]
+[ext_resource type="Texture2D" uid="uid://b57fclfsrqsxi" path="res://Menu/Images/button_play.png" id="1_332dp"]
+[ext_resource type="Texture2D" uid="uid://726r4v5t36x3" path="res://Menu/Images/button_play_select.png" id="2_wdime"]
+[ext_resource type="Texture2D" uid="uid://68io8274pyc8" path="res://Menu/Images/button_htp.png" id="2_y21l4"]
+[ext_resource type="Texture2D" uid="uid://ceyjife33ijpx" path="res://Menu/Images/button_credits.png" id="3_p4p8b"]
+[ext_resource type="Texture2D" uid="uid://cj70ap7t6pkuy" path="res://Menu/Images/button_htp_select.png" id="4_1lm7l"]
+[ext_resource type="Texture2D" uid="uid://bocgp45p7xn82" path="res://Menu/Images/button_credits_select.png" id="6_ttipc"]
+[ext_resource type="Texture2D" uid="uid://d37jwvdbjrgvq" path="res://Menu/Images/credits_screen.png" id="8_ttipc"]
+[ext_resource type="Texture2D" uid="uid://dr7b6643m45cc" path="res://Menu/Images/close.png" id="9_oxlmi"]
+[ext_resource type="Texture2D" uid="uid://dm8svmymxirvt" path="res://Menu/Images/close_select.png" id="10_oqrcm"]
+
+[node name="Menu" type="Node2D" unique_id=860244179]
+script = ExtResource("1_3tbja")
+
+[node name="BG" type="Sprite2D" parent="." unique_id=1814484000]
+position = Vector2(960, 540)
+texture = ExtResource("1_1lm7l")
+
+[node name="Botoes" type="Control" parent="." unique_id=517378681]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="BotoesContainer" type="VBoxContainer" parent="Botoes" unique_id=1951396937]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 309.0
+offset_right = 2939.2275
+offset_bottom = 1180.8989
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.395, 0.395)
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Play" type="TextureButton" parent="Botoes/BotoesContainer" unique_id=1223122905]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("1_332dp")
+texture_hover = ExtResource("2_wdime")
+
+[node name="HowToPlay" type="TextureButton" parent="Botoes/BotoesContainer" unique_id=2142922211]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_y21l4")
+texture_hover = ExtResource("4_1lm7l")
+
+[node name="Credits" type="TextureButton" parent="Botoes/BotoesContainer" unique_id=729057791]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("3_p4p8b")
+texture_hover = ExtResource("6_ttipc")
+
+[node name="Screens" type="Control" parent="." unique_id=1095493538]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="HowToPlay" type="Control" parent="Screens" unique_id=2108465643]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="BG" type="Sprite2D" parent="Screens/HowToPlay" unique_id=345561007]
+texture_filter = 1
+position = Vector2(960, 542)
+texture = ExtResource("8_ttipc")
+
+[node name="Title" type="RichTextLabel" parent="Screens/HowToPlay" unique_id=1982663518]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 485.0
+offset_top = 140.0
+offset_right = -485.0
+offset_bottom = -798.0
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[wave]How to Play[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Screens/HowToPlay" unique_id=922825935]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 485.0
+offset_top = 314.0
+offset_right = -485.0
+offset_bottom = -145.0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Se vira menó"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseHtp" type="TextureButton" parent="Screens/HowToPlay" unique_id=855725217]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.702
+anchor_top = 0.116000004
+anchor_right = 0.754
+anchor_bottom = 0.209
+offset_left = -0.8400879
+offset_top = -0.2800064
+offset_right = 0.3199463
+offset_bottom = 0.27999878
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_oxlmi")
+texture_hover = ExtResource("10_oqrcm")
+
+[node name="Credits" type="Control" parent="Screens" unique_id=1074754247]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BG" type="Sprite2D" parent="Screens/Credits" unique_id=77708716]
+texture_filter = 1
+position = Vector2(960, 542)
+texture = ExtResource("8_ttipc")
+
+[node name="Title" type="RichTextLabel" parent="Screens/Credits" unique_id=175745702]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 485.0
+offset_top = 140.0
+offset_right = -485.0
+offset_bottom = -798.0
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[wave]Credits[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="Screens/Credits" unique_id=385732199]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 485.0
+offset_top = 314.0
+offset_right = -485.0
+offset_bottom = -145.0
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[ul][wave]Ana Luiza Valente Saroldi Sibanto Caldeira[/wave][/ul]
+Programmer and Artist
+[hr]
+[ul][wave]Vitor Cirilo de Barros[/wave][/ul]
+Game designer and Programmer
+[hr]
+[ul][wave]Musics and SFX[/wave][/ul]
+XXXXXXX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CloseCredits" type="TextureButton" parent="Screens/Credits" unique_id=1866796851]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.702
+anchor_top = 0.116000004
+anchor_right = 0.754
+anchor_bottom = 0.209
+offset_left = -0.8400879
+offset_top = -0.2800064
+offset_right = 0.3199463
+offset_bottom = 0.27999878
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("9_oxlmi")
+texture_hover = ExtResource("10_oqrcm")
+
+[connection signal="pressed" from="Botoes/BotoesContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Botoes/BotoesContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]
+[connection signal="pressed" from="Botoes/BotoesContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Screens/HowToPlay/CloseHtp" to="." method="_on_close_htp_pressed"]
+[connection signal="pressed" from="Screens/Credits/CloseCredits" to="." method="_on_close_credits_pressed"]

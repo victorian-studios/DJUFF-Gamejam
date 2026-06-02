@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://gumo55he763d"]
+
+[ext_resource type="Script" uid="uid://relaxrecdt45" path="res://global.gd" id="1_4mbhf"]
+
+[node name="Global" type="Node2D" unique_id=1540874328]
+script = ExtResource("1_4mbhf")
