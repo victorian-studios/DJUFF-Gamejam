@@ -1,9 +1,18 @@
 [gd_scene format=3 uid="uid://cgge5q6t2p064"]
 
 [ext_resource type="Texture2D" uid="uid://byhkhpllvfe03" path="res://Game/Images/home_normal.png" id="1_a53ve"]
+[ext_resource type="Script" uid="uid://dmvy2nb5b04qy" path="res://Game/Scripts/home.gd" id="1_g5idm"]
 [ext_resource type="Script" uid="uid://bqx1bfcl30twp" path="res://Game/Scripts/home_life.gd" id="2_oiein"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8o5p1"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oiein"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -17,13 +26,37 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oiein"]
 size = Vector2(866, 608)
 
-[node name="Home" type="Node2D" unique_id=601810387]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5idm"]
+size = Vector2(28, 260)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=546031129]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghef2"]
+size = Vector2(34, 261)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g5idm"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r6hok"]
+size = Vector2(426, 219)
+
+[node name="Home" type="Node2D" unique_id=601810387]
+script = ExtResource("1_g5idm")
+
+[node name="In" type="AnimatedSprite2D" parent="." unique_id=546031129]
 sprite_frames = SubResource("SpriteFrames_8o5p1")
 animation = &"normal"
 
+[node name="Out" type="AnimatedSprite2D" parent="." unique_id=2045387446]
+sprite_frames = SubResource("SpriteFrames_oiein")
+animation = &"normal"
+
 [node name="Area2D" type="Area2D" parent="." unique_id=314338405]
+collision_layer = 128
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=327657876]
 shape = SubResource("RectangleShape2D_oiein")
@@ -36,3 +69,43 @@ offset_bottom = -316.0
 theme_override_constants/separation = 40
 alignment = 1
 script = ExtResource("2_oiein")
+
+[node name="Door" type="StaticBody2D" parent="." unique_id=367531628]
+position = Vector2(-430, 171)
+collision_layer = 64
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=1008841403]
+position = Vector2(14, 2)
+shape = SubResource("RectangleShape2D_g5idm")
+
+[node name="Area2D" type="Area2D" parent="Door" unique_id=1610342060]
+collision_layer = 64
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D" unique_id=498325707]
+position = Vector2(14, 1.5)
+shape = SubResource("RectangleShape2D_ghef2")
+
+[node name="Panel" type="AnimatedSprite2D" parent="." unique_id=737355150]
+sprite_frames = SubResource("SpriteFrames_g5idm")
+animation = &"normal"
+
+[node name="Area2D" type="Area2D" parent="Panel" unique_id=1250127310 groups=["HomeInteract"]]
+collision_layer = 128
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Area2D" unique_id=336067930]
+shape = SubResource("RectangleShape2D_r6hok")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=1513596970]
+offset_left = -50.0
+offset_top = -174.0
+offset_right = 50.0
+offset_bottom = -114.0
+theme_override_constants/outline_size = 19
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[wave]E[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1

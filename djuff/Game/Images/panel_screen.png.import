@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8jsyax133ccb"
-path="res://.godot/imported/arm_thorn.png-a39e6a6d969bd383752c411d0d9aa465.ctex"
+uid="uid://cyign5ftv4p5t"
+path="res://.godot/imported/panel_screen.png-3fe7eeece01934d1afd0833291eab781.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Images/arm_thorn.png"
-dest_files=["res://.godot/imported/arm_thorn.png-a39e6a6d969bd383752c411d0d9aa465.ctex"]
+source_file="res://Game/Images/panel_screen.png"
+dest_files=["res://.godot/imported/panel_screen.png-3fe7eeece01934d1afd0833291eab781.ctex"]
 
 [params]
 

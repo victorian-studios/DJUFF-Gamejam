@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ctdxo6s8bpmwb"]
+
+[ext_resource type="Script" uid="uid://coeuf0f3g7lph" path="res://Game/Scripts/spotlight.gd" id="1_wxtlw"]
+[ext_resource type="Texture2D" uid="uid://c27ygwpuo04eg" path="res://Game/Images/trap_spotlight.png" id="2_o7beb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nsu6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_o7beb")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[node name="Spotlight" type="Control" unique_id=1150767590]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wxtlw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2115353346]
+sprite_frames = SubResource("SpriteFrames_nsu6l")
+animation = &"normal"
+autoplay = "normal"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1634264312]
+collision_layer = 64
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1119196930]
+position = Vector2(-6, -9)
+polygon = PackedVector2Array(-62, -171, -115, 215, -680, 216)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

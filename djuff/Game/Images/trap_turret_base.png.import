@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://h83fxxseip16"
-path="res://.godot/imported/arm_turret.png-5829c7ae765df574d731a6785413aa7f.ctex"
+uid="uid://c4vooenh0hv84"
+path="res://.godot/imported/trap_turret_base.png-2f3c9e4a455fe6182d14c767ea79cfb9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Images/arm_turret.png"
-dest_files=["res://.godot/imported/arm_turret.png-5829c7ae765df574d731a6785413aa7f.ctex"]
+source_file="res://Game/Images/trap_turret_base.png"
+dest_files=["res://.godot/imported/trap_turret_base.png-2f3c9e4a455fe6182d14c767ea79cfb9.ctex"]
 
 [params]
 

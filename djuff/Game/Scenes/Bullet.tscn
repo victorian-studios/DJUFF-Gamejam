@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://nmxwtdaew86s"]
+
+[ext_resource type="Script" uid="uid://bk0u3my4qu3yq" path="res://Game/Scripts/bullet.gd" id="1_u8qkj"]
+[ext_resource type="Texture2D" uid="uid://rylerbueg651" path="res://Game/Images/bullet.png" id="2_7xly5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dsvmh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7xly5")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dsvmh"]
+radius = 11.0
+height = 50.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u8qkj"]
+radius = 11.0
+height = 50.0
+
+[node name="Bullet" type="RigidBody2D" unique_id=1437176844 groups=["Damage"]]
+collision_layer = 64
+mass = 0.001
+gravity_scale = 0.0
+script = ExtResource("1_u8qkj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=46921208]
+sprite_frames = SubResource("SpriteFrames_dsvmh")
+animation = &"shoot"
+autoplay = "shoot"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1929925270]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_dsvmh")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1410737558]
+collision_layer = 64
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=244848257]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_u8qkj")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

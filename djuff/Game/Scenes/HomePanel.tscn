@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://bbw6k1xyxlc3y"]
+
+[ext_resource type="Script" uid="uid://ctd17g7200jhs" path="res://Game/Scenes/home_panel.gd" id="1_aer6g"]
+[ext_resource type="Texture2D" uid="uid://cyign5ftv4p5t" path="res://Game/Images/panel_screen.png" id="1_b5pbg"]
+[ext_resource type="Texture2D" uid="uid://b5spvf2getbut" path="res://Game/Images/close.png" id="2_1jhxb"]
+[ext_resource type="Texture2D" uid="uid://rjrmqaw2o2lf" path="res://Game/Images/close_select.png" id="3_x6ghn"]
+
+[node name="HomePanel" type="Panel" unique_id=2114613122]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1920.0
+offset_bottom = -1080.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_aer6g")
+
+[node name="Shop" type="TextureRect" parent="." unique_id=1724908389]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -476.0
+offset_top = -402.0
+offset_right = 476.0
+offset_bottom = 402.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_b5pbg")
+
+[node name="Close" type="TextureButton" parent="." unique_id=24876287]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.70400006
+anchor_right = 0.70400006
+anchor_bottom = 0.202
+offset_left = 397.0
+offset_top = -423.0
+offset_right = 498.0
+offset_bottom = -322.0
+grow_horizontal = 0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("2_1jhxb")
+texture_hover = ExtResource("3_x6ghn")
+
+[connection signal="pressed" from="Close" to="." method="_on_close_pressed"]

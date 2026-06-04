@@ -1,0 +1,23 @@
+{
+    "turret":
+    {
+        "strength": 3,
+        "cooldown": 1,
+        "debuff": ""
+    },
+    "thorn":
+    {
+        "strength": 2,
+        "cooldown": 3,
+        "debuff": ""
+    },
+    "spotlight":
+    {
+        "strength": 0,
+        "cooldown": 0,
+        "debuff": {
+            "status": "speed",
+            "value": 40
+        }
+    }
+}

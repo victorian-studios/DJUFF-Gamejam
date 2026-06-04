@@ -4,15 +4,15 @@ var speed = 0
 var life = 0
 var strength = 0
 
-func _ready():
-	setup("werewolf")
+# func _ready():
+# 	setup("werewolf")
 
-func setup(type):
-	var global = $"/root/Global"
-	var status = global.read_json("werewolf", "res://Game/Jsons/enemies.json")
+func setup(status):
+
 	speed = status["speed"]
 	life = status["life"]
 	strength = status["strength"]
+	$Monster_life.setMaxHearts(life)
 
 func _process(delta):
 	# Add the gravity.
@@ -27,3 +27,26 @@ func _process(delta):
 		velocity.x = move_toward(velocity.x, 0, speed)
 
 	move_and_slide()
+
+func monster_take_damage(body):
+	if life > 0:
+			if life - body.damage > 0:
+				life = life - body.damage
+				$Monster_life.updateHearts(life)
+			else:
+				queue_free()
+
+func _on_area_2d_body_entered(body: Node2D):
+	if body.is_in_group("Damage"):
+		monster_take_damage(body)
+		
+
+
+# func _on_area_2d_area_entered(area):
+# 	if area.is_in_group("Damage"):
+# 		if life > 0:
+# 			if life - (area.get_parent()).damage > 0:
+# 				life = life - (area.get_parent()).damage
+# 				$Monster_life.updateHearts(life)
+# 			else:
+# 				queue_free()

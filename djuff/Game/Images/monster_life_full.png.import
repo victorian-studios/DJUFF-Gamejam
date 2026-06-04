@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d38qea52ne4e3"
-path="res://.godot/imported/arms.png-61842ebf70448198d7ed5af3e338094f.ctex"
+uid="uid://dk2qeud8sfhrx"
+path="res://.godot/imported/monster_life_full.png-6d5444f7a4efe7e5466f74168c3711b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Images/arms.png"
-dest_files=["res://.godot/imported/arms.png-61842ebf70448198d7ed5af3e338094f.ctex"]
+source_file="res://Game/Images/monster_life_full.png"
+dest_files=["res://.godot/imported/monster_life_full.png-6d5444f7a4efe7e5466f74168c3711b9.ctex"]
 
 [params]
 

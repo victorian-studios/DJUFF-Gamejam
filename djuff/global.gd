@@ -3,8 +3,8 @@ extends Node2D
 @export var home_life = 5
 @export var player_life = 1
 
-@export var day_time = 10
-@export var night_time = 8
+@export var day_time = 360
+@export var night_time = 10
 
 @export var inventory_col_size = 3
 # @export var inventory_list = []
@@ -20,3 +20,6 @@ func read_json(type, path):
 	
 	elif type == "waves":
 		return json.data
+	
+	elif type == "turret" or type == "thorn" or type == "spotlight":
+		return json.data[type]

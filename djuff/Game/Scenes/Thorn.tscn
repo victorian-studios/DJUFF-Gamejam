@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://x8q00cdhvpla"]
+
+[ext_resource type="Script" uid="uid://biuvinwhw2go7" path="res://Game/Scripts/thorn.gd" id="1_o0cux"]
+[ext_resource type="Texture2D" uid="uid://bnkontbiv2gx8" path="res://Game/Images/trap_thorn.png" id="2_2ws6f"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jw0ap"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2ws6f")
+}],
+"loop": true,
+"name": &"normal",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ws6f"]
+size = Vector2(267, 79)
+
+[node name="Thorn" type="Control" unique_id=1123471750]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o0cux")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=844514236]
+sprite_frames = SubResource("SpriteFrames_jw0ap")
+animation = &"normal"
+autoplay = "normal"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=928390893 groups=["Damage"]]
+collision_layer = 64
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1189719000]
+position = Vector2(1.5, 170.5)
+shape = SubResource("RectangleShape2D_2ws6f")
+
+[node name="Cooldown" type="Timer" parent="." unique_id=437559500]
+one_shot = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
