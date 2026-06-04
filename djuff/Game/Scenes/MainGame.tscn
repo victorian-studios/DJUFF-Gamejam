@@ -380,13 +380,13 @@ shape = SubResource("RectangleShape2D_o1weo")
 position = Vector2(-4422, 562)
 
 [node name="Item" parent="." unique_id=331137851 instance=ExtResource("11_5bgyh")]
-position = Vector2(1333, 486)
+position = Vector2(1333, 878)
 
 [node name="Item2" parent="." unique_id=1708259386 instance=ExtResource("11_5bgyh")]
-position = Vector2(1563, 504)
+position = Vector2(1563, 878)
 
 [node name="Item3" parent="." unique_id=1866970697 instance=ExtResource("11_5bgyh")]
-position = Vector2(1798, 478)
+position = Vector2(1798, 878)
 
 [node name="Player" parent="." unique_id=221582413 instance=ExtResource("6_o1weo")]
-position = Vector2(1032, 569.00006)
+position = Vector2(1032, 802)

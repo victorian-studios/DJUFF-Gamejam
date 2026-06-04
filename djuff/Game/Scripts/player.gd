@@ -30,15 +30,15 @@ func _process(delta):
 		else:
 			$AnimatedSprite2D.flip_h = false
 
+		$AnimatedSprite2D.play("walk")
 		velocity.x = direction * SPEED
+
 	else:
+		$AnimatedSprite2D.play("idle")
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	
 	if Input.is_action_just_pressed("interact") and can_interact:
 		get_parent().add_inventory(item)
-		# chamar o main game
-		# chamar o hud
-		# modificar a lista o.O
 	
 	if Input.is_action_just_pressed("slot_1"):
 		print("slot 1")

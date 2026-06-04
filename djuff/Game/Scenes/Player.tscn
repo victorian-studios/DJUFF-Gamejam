@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://b7hudduk040ym" path="res://Game/Scripts/player.gd" id="1_gctag"]
 [ext_resource type="Texture2D" uid="uid://e1xtwgw4y4el" path="res://Game/Images/player.png" id="2_f8br2"]
 [ext_resource type="Script" uid="uid://c3f3howkb708t" path="res://Game/Scripts/player_life.gd" id="3_e2mpb"]
+[ext_resource type="Texture2D" uid="uid://c6kdg175rw7ft" path="res://Game/Images/player_walk_1.png" id="3_nn81n"]
+[ext_resource type="Texture2D" uid="uid://d0wgl1g4tlrj" path="res://Game/Images/player_walk_2.png" id="4_lpxnf"]
+[ext_resource type="Texture2D" uid="uid://ddlkyo53qmrsl" path="res://Game/Images/player_walk_3.png" id="5_k821p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e2mpb"]
 animations = [{
@@ -13,6 +16,23 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_nn81n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lpxnf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k821p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lpxnf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rw3lw"]
@@ -31,6 +51,7 @@ script = ExtResource("1_gctag")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_e2mpb")
 animation = &"idle"
+autoplay = "idle"
 
 [node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=188806499]
 position = Vector2(2.6666667, 0)
