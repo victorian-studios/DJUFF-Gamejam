@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cgbsumu2tfwno"]
+
+[ext_resource type="Script" uid="uid://dnwjybynnsr30" path="res://Game/Scripts/life.gd" id="1_k0xbr"]
+[ext_resource type="Texture2D" uid="uid://du1ff53au8y7t" path="res://Game/Images/house_life_empty.png" id="2_8k4y4"]
+[ext_resource type="Texture2D" uid="uid://cs8doibhg1nk7" path="res://Game/Images/house_life_full.png" id="3_bpjkd"]
+[ext_resource type="Texture2D" uid="uid://dn7vd70nlu4kg" path="res://Game/Images/player_life_empty.png" id="4_nt5am"]
+[ext_resource type="Texture2D" uid="uid://djril2j11esgx" path="res://Game/Images/player_life_full.png" id="5_3mg2q"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1oi4y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8k4y4")
+}],
+"loop": true,
+"name": &"house_empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bpjkd")
+}],
+"loop": true,
+"name": &"house_full",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_nt5am")
+}],
+"loop": true,
+"name": &"player_empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_3mg2q")
+}],
+"loop": true,
+"name": &"player_full",
+"speed": 5.0
+}]
+
+[node name="Life" type="Panel" unique_id=1065466981]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(114, 0)
+anchors_preset = -1
+anchor_right = 0.059000004
+anchor_bottom = 0.106000006
+offset_right = 0.7199936
+offset_bottom = -0.48000336
+script = ExtResource("1_k0xbr")
+
+[node name="Heart" type="AnimatedSprite2D" parent="." unique_id=1292055472]
+position = Vector2(56.736843, 56)
+scale = Vector2(0.8596491, 0.8596491)
+sprite_frames = SubResource("SpriteFrames_1oi4y")
+animation = &"house_empty"

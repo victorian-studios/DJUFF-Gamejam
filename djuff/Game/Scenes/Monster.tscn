@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://bau0rqleul42u"]
+
+[ext_resource type="Script" uid="uid://bej1ahdl8xut5" path="res://Game/Scripts/monster.gd" id="1_8rs5l"]
+[ext_resource type="Texture2D" uid="uid://bx7vq5q4fjwdv" path="res://Game/Images/monster.png" id="1_b0y4i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8rs5l"]
+size = Vector2(295, 345)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7whhr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_b0y4i")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Monster" type="CharacterBody2D" unique_id=79964215]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_8rs5l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1365517570]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_8rs5l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=615782744]
+sprite_frames = SubResource("SpriteFrames_7whhr")
+animation = &"walk"

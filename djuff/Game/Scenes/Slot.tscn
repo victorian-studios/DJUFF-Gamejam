@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://co84ovkinxdls"]
+
+[ext_resource type="Texture2D" uid="uid://dess8an2s1smt" path="res://Game/Images/empty_slot.png" id="1_ifpd7"]
+[ext_resource type="Texture2D" uid="uid://deqijwc5dg8p5" path="res://Game/Images/select_slot.png" id="1_j40cy"]
+[ext_resource type="Texture2D" uid="uid://codcumhxucysc" path="res://Game/Images/ingot_slot.png" id="2_j40cy"]
+[ext_resource type="Texture2D" uid="uid://dx6v1l1l134r8" path="res://Game/Images/screw_slot.png" id="3_m6ibc"]
+[ext_resource type="Texture2D" uid="uid://dcp7yfgxhumwk" path="res://Game/Images/light_slot.png" id="4_hx8ee"]
+[ext_resource type="Texture2D" uid="uid://dp3gmgyiny1tn" path="res://Game/Images/thorn_slot.png" id="5_c20xo"]
+[ext_resource type="Texture2D" uid="uid://c3840vx6q60x8" path="res://Game/Images/turret_slot.png" id="6_v0alt"]
+[ext_resource type="Texture2D" uid="uid://d1hsaxjugb36h" path="res://Game/Images/wood_slot.png" id="7_o7slh"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pb5uk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ifpd7")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j40cy")
+}],
+"loop": true,
+"name": &"ingot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_m6ibc")
+}],
+"loop": true,
+"name": &"screw",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hx8ee")
+}],
+"loop": true,
+"name": &"spotlight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_c20xo")
+}],
+"loop": true,
+"name": &"thorn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v0alt")
+}],
+"loop": true,
+"name": &"turret",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_o7slh")
+}],
+"loop": true,
+"name": &"wood",
+"speed": 5.0
+}]
+
+[node name="Slot" type="Control" unique_id=1966388510]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Item" type="AnimatedSprite2D" parent="." unique_id=1924521666]
+sprite_frames = SubResource("SpriteFrames_pb5uk")
+animation = &"wood"
+
+[node name="Select" type="Sprite2D" parent="Item" unique_id=410777496]
+visible = false
+texture = ExtResource("1_j40cy")

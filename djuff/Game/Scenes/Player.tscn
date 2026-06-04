@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://cab6si4wdbcim"]
+
+[ext_resource type="Script" uid="uid://b7hudduk040ym" path="res://Game/Scripts/player.gd" id="1_gctag"]
+[ext_resource type="Texture2D" uid="uid://e1xtwgw4y4el" path="res://Game/Images/player.png" id="2_f8br2"]
+[ext_resource type="Script" uid="uid://c3f3howkb708t" path="res://Game/Scripts/player_life.gd" id="3_e2mpb"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e2mpb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_f8br2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rw3lw"]
+size = Vector2(48, 194)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e2mpb"]
+size = Vector2(52.66667, 190.66667)
+
+[node name="Player" type="CharacterBody2D" unique_id=221582413 groups=["Player"]]
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 31
+script = ExtResource("1_gctag")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1655957987]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_e2mpb")
+animation = &"idle"
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=188806499]
+position = Vector2(2.6666667, 0)
+shape = SubResource("RectangleShape2D_rw3lw")
+
+[node name="player_life" type="HBoxContainer" parent="." unique_id=2089497207]
+offset_left = -65.0
+offset_top = -222.0
+offset_right = 66.0
+offset_bottom = -103.0
+alignment = 1
+script = ExtResource("3_e2mpb")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=899446979]
+position = Vector2(0, -1)
+limit_left = -4080
+limit_top = -503
+limit_right = 1920
+limit_bottom = 1080
+position_smoothing_enabled = true
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1038736935]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=643825976]
+position = Vector2(1.666666, 1.3333359)
+shape = SubResource("RectangleShape2D_e2mpb")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

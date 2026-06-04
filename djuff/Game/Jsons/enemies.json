@@ -1,0 +1,11 @@
+{
+    "normal":
+    {
+        "werewolf":
+        {
+            "life": 9,
+            "strength": 1,
+            "speed": 100
+        }
+    }
+}

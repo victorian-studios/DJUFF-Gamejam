@@ -1,3 +1,392 @@
 [gd_scene format=3 uid="uid://braq7sn4js2oj"]
 
+[ext_resource type="Script" uid="uid://b62nmu171721m" path="res://Game/Scripts/main_game.gd" id="1_ifcxl"]
+[ext_resource type="Texture2D" uid="uid://vmh8ht6gq8p5" path="res://Game/Images/fade.png" id="1_pth0r"]
+[ext_resource type="Texture2D" uid="uid://t47muhdlvrfh" path="res://Game/Images/bg_game_day.png" id="3_wl0j2"]
+[ext_resource type="Texture2D" uid="uid://bl1557sd6yo0h" path="res://Game/Images/bg_game_night.png" id="4_oyim1"]
+[ext_resource type="PackedScene" uid="uid://b3n4da5q3gu6q" path="res://Game/Scenes/hud.tscn" id="4_unl7d"]
+[ext_resource type="Texture2D" uid="uid://b2dof1367yhqt" path="res://Game/Images/bg_game_afternoon.png" id="4_vspil"]
+[ext_resource type="PackedScene" uid="uid://dbloy3sq6a82c" path="res://Game/Scenes/Ground.tscn" id="5_odun2"]
+[ext_resource type="PackedScene" uid="uid://cab6si4wdbcim" path="res://Game/Scenes/Player.tscn" id="6_o1weo"]
+[ext_resource type="PackedScene" uid="uid://cgge5q6t2p064" path="res://Game/Scenes/Home.tscn" id="7_o1weo"]
+[ext_resource type="PackedScene" uid="uid://qwmenyd2xigq" path="res://Game/Scenes/Spawn.tscn" id="8_wl0j2"]
+[ext_resource type="PackedScene" uid="uid://dvq1qwitdpumx" path="res://Game/Scenes/Items.tscn" id="11_5bgyh"]
+
+[sub_resource type="Animation" id="Animation_pj2es"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DaysBG/BG_day:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DaysBG/BG_afternoon:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DaysBG/BG_day:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DaysBG/BG_afternoon:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("DaysBG/BG_night:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DaysBG/BG_night:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_oyim1"]
+resource_name = "afternoon_night"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DaysBG/BG_afternoon:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DaysBG/BG_afternoon:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DaysBG/BG_night:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DaysBG/BG_night:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_wl0j2"]
+resource_name = "day_afternoon"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DaysBG/BG_day:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DaysBG/BG_afternoon:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.03333333, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DaysBG/BG_day:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DaysBG/BG_afternoon:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_5bgyh"]
+resource_name = "night_day"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DaysBG/BG_night:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DaysBG/BG_night:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DaysBG/BG_day:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.033333335, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DaysBG/BG_day:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.03333336, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
+[sub_resource type="Animation" id="Animation_vn75q"]
+resource_name = "start_game"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Fade:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333334, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pth0r"]
+_data = {
+&"RESET": SubResource("Animation_pj2es"),
+&"afternoon_night": SubResource("Animation_oyim1"),
+&"day_afternoon": SubResource("Animation_wl0j2"),
+&"night_day": SubResource("Animation_5bgyh"),
+&"start_game": SubResource("Animation_vn75q")
+}
+
+[sub_resource type="Gradient" id="Gradient_ifcxl"]
+offsets = PackedFloat32Array(0.006024096, 0.37349397, 0.7891566)
+colors = PackedColorArray(0.6628909, 0.6628909, 0.6628909, 1, 0.4351145, 0.4351145, 0.4351145, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pj2es"]
+gradient = SubResource("Gradient_ifcxl")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.95, 0.95)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o1weo"]
+size = Vector2(134, 1081)
+
 [node name="MainGame" type="Node2D" unique_id=1099931386]
+script = ExtResource("1_ifcxl")
+
+[node name="Timer1" type="Timer" parent="." unique_id=86318334]
+one_shot = true
+
+[node name="Timer2" type="Timer" parent="." unique_id=1057216429]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=6663795]
+libraries/ = SubResource("AnimationLibrary_pth0r")
+speed_scale = 2.0
+
+[node name="Fade" type="Sprite2D" parent="." unique_id=1363945494]
+process_mode = 3
+position = Vector2(960, 540)
+texture = ExtResource("1_pth0r")
+
+[node name="DaysBG" type="Control" parent="." unique_id=1213912976]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -4580.0
+offset_right = 1920.0
+offset_bottom = 984.0
+
+[node name="BG_night" type="Sprite2D" parent="DaysBG" unique_id=265627533]
+position = Vector2(3250, 540)
+texture = ExtResource("4_oyim1")
+
+[node name="BG_afternoon" type="Sprite2D" parent="DaysBG" unique_id=1814812671]
+position = Vector2(3250, 540)
+texture = ExtResource("4_vspil")
+
+[node name="BG_day" type="Sprite2D" parent="DaysBG" unique_id=482001424]
+position = Vector2(3250, 540)
+texture = ExtResource("3_wl0j2")
+
+[node name="AmbientLight" type="DirectionalLight2D" parent="." unique_id=912023405]
+visible = false
+energy = 0.8
+blend_mode = 1
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=7844996]
+visible = false
+position = Vector2(886, 567.00006)
+scale = Vector2(5, 5)
+energy = 1.5
+texture = SubResource("GradientTexture2D_pj2es")
+
+[node name="HUD" parent="." unique_id=2118517463 instance=ExtResource("4_unl7d")]
+
+[node name="Ground" parent="." unique_id=784511926 instance=ExtResource("5_odun2")]
+position = Vector2(-1330, 1008)
+
+[node name="Home" parent="." unique_id=601810387 instance=ExtResource("7_o1weo")]
+position = Vector2(808, 637)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=13955487]
+position = Vector2(960, 540)
+enabled = false
+limit_left = -4080
+limit_top = 0
+limit_right = 1920
+limit_bottom = 1080
+
+[node name="MapLimits" type="StaticBody2D" parent="." unique_id=463701577]
+position = Vector2(-4189, 502)
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapLimits" unique_id=1633648328]
+position = Vector2(42, 38.5)
+shape = SubResource("RectangleShape2D_o1weo")
+
+[node name="MapLimits2" type="StaticBody2D" parent="." unique_id=1063202214]
+position = Vector2(-4189, 502)
+collision_layer = 8
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapLimits2" unique_id=265280304]
+position = Vector2(6176, 39)
+shape = SubResource("RectangleShape2D_o1weo")
+
+[node name="Spawn" parent="." unique_id=2062382681 instance=ExtResource("8_wl0j2")]
+position = Vector2(-4422, 562)
+
+[node name="Item" parent="." unique_id=331137851 instance=ExtResource("11_5bgyh")]
+position = Vector2(1333, 486)
+
+[node name="Item2" parent="." unique_id=1708259386 instance=ExtResource("11_5bgyh")]
+position = Vector2(1563, 504)
+
+[node name="Item3" parent="." unique_id=1866970697 instance=ExtResource("11_5bgyh")]
+position = Vector2(1798, 478)
+
+[node name="Player" parent="." unique_id=221582413 instance=ExtResource("6_o1weo")]
+position = Vector2(1032, 569.00006)
