@@ -74,7 +74,7 @@ anchors_preset = 0
 
 [node name="Item" type="AnimatedSprite2D" parent="." unique_id=1924521666]
 sprite_frames = SubResource("SpriteFrames_pb5uk")
-animation = &"wood"
+animation = &"empty"
 
 [node name="Select" type="Sprite2D" parent="Item" unique_id=410777496]
 visible = false

@@ -1,74 +1,80 @@
 {
-    "turret":
-    {
-        "name": "Turret",
-        "strength": 3,
-        "cooldown": 1,
-        "debuff": "",
-        "image": "res://Game/Images/trap_turret_full.png",
-        "price":
-        [
-            {
-                "material": "res://Game/Images/wood_shop.png",
-                "qtd": 2
-            },
-            {
-                "material": "res://Game/Images/screw_shop.png",
-                "qtd": 6
-            },
-            {
-                "material": "res://Game/Images/ingot_shop.png",
-                "qtd": 4
-            }
-        ]
-    },
-    "thorn":
-    {
-        "name": "Thorn",
-        "strength": 2,
-        "cooldown": 3,
-        "debuff": "",
-        "image": "res://Game/Images/trap_thorn.png",
-        "price":
-        [
-            {
-                "material": "res://Game/Images/wood_shop.png",
-                "qtd": 6
-            },
-            {
-                "material": "res://Game/Images/screw_shop.png",
-                "qtd": 3    
-            },
-            {
-                "material": "res://Game/Images/ingot_shop.png",
-                "qtd": 1
-            }
-        ]
-    },
-    "spotlight":
-    {
-        "name": "Spotlight",
-        "strength": 0,
-        "cooldown": 0,
-        "debuff": {
-            "status": "speed",
-            "value": 40
-        },
-        "image": "res://Game/Images/trap_spotlight.png",
-        "price":
-        [
-            {
-                "material": "res://Game/Images/wood_shop.png",
-                "qtd": 3
-            },
-            {
-                "material": "res://Game/Images/screw_shop.png",
-                "qtd": 2
-            },
-            {
-                "material": "res://Game/Images/ingot_shop.png",
-                "qtd": 2
-            }
-        ]
-    }
+	"turret": {
+		"name": "Turret",
+		"strength": 3.0,
+		"cooldown": 1.0,
+		"debuff": "",
+		"image": "res://Game/Images/trap_turret_full.png",
+		"price": [
+			{
+				"name": "wood",
+				"material": "res://Game/Images/wood_shop.png",
+				"qtd": 2.0
+			},
+			{
+				"name": "screw",
+				"material": "res://Game/Images/screw_shop.png",
+				"qtd": 6.0
+			},
+			{
+				"name": "ingot",
+				"material": "res://Game/Images/ingot_shop.png",
+				"qtd": 4.0
+			}
+		],
+		"energy_cost": 1.0
+	},
+	"thorn": {
+		"name": "Thorn",
+		"strength": 2.0,
+		"cooldown": 3.0,
+		"debuff": "",
+		"image": "res://Game/Images/trap_thorn.png",
+		"price": [
+			{
+				"name": "wood",
+				"material": "res://Game/Images/wood_shop.png",
+				"qtd": 6.0
+			},
+			{
+				"name": "screw",
+				"material": "res://Game/Images/screw_shop.png",
+				"qtd": 3.0
+			},
+			{
+				"name": "ingot",
+				"material": "res://Game/Images/ingot_shop.png",
+				"qtd": 1.0
+			}
+		],
+		"energy_cost": 1.0
+	},
+	"spotlight": {
+		"name": "Spotlight",
+		"strength": 0.0,
+		"cooldown": 0.0,
+		"debuff": {
+			"status": "speed",
+			"value": 40.0
+		},
+		"image": "res://Game/Images/trap_spotlight.png",
+		"price": [
+			{
+				"name": "wood",
+				"material": "res://Game/Images/wood_shop.png",
+				"qtd": 3.0
+			},
+			{
+				"name": "screw",
+				"material": "res://Game/Images/screw_shop.png",
+				"qtd": 2.0
+			},
+			{
+				"name": "ingot",
+				"material": "res://Game/Images/ingot_shop.png",
+				"qtd": 2.0
+			}
+		],
+		"energy_cost": 1.0
+	}
 }

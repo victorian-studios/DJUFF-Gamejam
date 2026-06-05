@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://cwxcaldnosh0f" path="res://Game/Scripts/hud.gd" id="1_bamcn"]
 [ext_resource type="Texture2D" uid="uid://dlpskcy6cts6y" path="res://Game/Images/day.png" id="1_dtgev"]
 [ext_resource type="Texture2D" uid="uid://qwqi7cvpc2yj" path="res://Game/Images/night.png" id="2_bamcn"]
+[ext_resource type="Texture2D" uid="uid://c42hdh5v00wmm" path="res://Game/Images/energy_base.png" id="4_5lamd"]
+[ext_resource type="Texture2D" uid="uid://b0difk6xcbruy" path="res://Game/Images/energy_border.png" id="5_fpgx0"]
+[ext_resource type="Texture2D" uid="uid://04aaonf2yvkn" path="res://Game/Images/energy_content.png" id="6_thl5v"]
 
 [node name="HUD" type="CanvasLayer" unique_id=2118517463]
 script = ExtResource("1_bamcn")
@@ -43,3 +46,35 @@ offset_top = 275.0
 offset_bottom = -0.375
 theme_override_constants/separation = 150
 alignment = 1
+
+[node name="Energy" type="TextureProgressBar" parent="." unique_id=2104263555]
+anchors_preset = -1
+anchor_left = 0.40500003
+anchor_top = 0.87600005
+anchor_right = 0.595
+anchor_bottom = 0.989
+offset_left = 0.8999634
+offset_top = -0.080078125
+offset_right = -0.9000244
+offset_bottom = -0.11999512
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+max_value = 3.0
+value = 2.0
+texture_under = ExtResource("4_5lamd")
+texture_over = ExtResource("5_fpgx0")
+texture_progress = ExtResource("6_thl5v")
+
+[node name="EnergyCount" type="RichTextLabel" parent="Energy" unique_id=1155464761]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.9990001
+anchor_bottom = 1.0
+offset_right = -0.13702393
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 80
+bbcode_enabled = true
+text = "[wave]3/3[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1

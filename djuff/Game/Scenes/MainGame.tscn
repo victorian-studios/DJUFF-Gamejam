@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://egnl6lhqx71x" path="res://Game/Scripts/cam_night.gd" id="9_nn8hy"]
 [ext_resource type="PackedScene" uid="uid://dvq1qwitdpumx" path="res://Game/Scenes/Items.tscn" id="11_5bgyh"]
 [ext_resource type="PackedScene" uid="uid://bjhy4134c63j4" path="res://Game/Scenes/Turret.tscn" id="14_nn8hy"]
+[ext_resource type="PackedScene" uid="uid://dm1bk5vs46a38" path="res://Game/Scenes/TrapSpot.tscn" id="14_tisq8"]
 [ext_resource type="PackedScene" uid="uid://bbw6k1xyxlc3y" path="res://Game/Scenes/HomePanel.tscn" id="16_tisq8"]
 
 [sub_resource type="Animation" id="Animation_pj2es"]
@@ -356,9 +357,9 @@ position = Vector2(808, 637)
 
 [node name="CamNight" type="Camera2D" parent="." unique_id=13955487]
 position = Vector2(960, 540)
-limit_left = -4080
+limit_left = -5830
 limit_top = 0
-limit_right = 1920
+limit_right = 1910
 limit_bottom = 1080
 position_smoothing_enabled = true
 script = ExtResource("9_nn8hy")
@@ -390,41 +391,8 @@ position = Vector2(1563, 878)
 [node name="Item3" parent="." unique_id=1866970697 instance=ExtResource("11_5bgyh")]
 position = Vector2(1798, 878)
 
-[node name="Spot1" type="Marker2D" parent="." unique_id=27000680]
-position = Vector2(-4895, 928)
-
-[node name="Spot2" type="Marker2D" parent="." unique_id=1202977421]
-position = Vector2(-4025, 928)
-
-[node name="Spot3" type="Marker2D" parent="." unique_id=2021719777]
-position = Vector2(-3667, 928)
-
-[node name="Spot4" type="Marker2D" parent="." unique_id=210337325]
-position = Vector2(-2850, 928)
-
-[node name="Spot5" type="Marker2D" parent="." unique_id=725193744]
-position = Vector2(-2027, 928)
-
-[node name="Spot6" type="Marker2D" parent="." unique_id=1405479076]
-position = Vector2(-1792, 928)
-
-[node name="Spot7" type="Marker2D" parent="." unique_id=425952498]
-position = Vector2(-1200, 928)
-
-[node name="Spot8" type="Marker2D" parent="." unique_id=246544350]
-position = Vector2(-310, 928)
-
-[node name="Spot9" type="Marker2D" parent="." unique_id=1582517059]
-position = Vector2(-42, 929)
-
-[node name="Turret" parent="." unique_id=2047060045 instance=ExtResource("14_nn8hy")]
-offset_left = -83.0
-offset_top = 736.0
-offset_right = -83.0
-offset_bottom = 736.0
-
 [node name="Spawn" parent="." unique_id=2062382681 instance=ExtResource("8_wl0j2")]
-position = Vector2(-1920, 816)
+position = Vector2(-937, 816)
 
 [node name="Player" parent="." unique_id=221582413 instance=ExtResource("6_o1weo")]
 position = Vector2(1442, 713.00006)
@@ -438,6 +406,53 @@ offset_left = 853.0
 offset_top = 516.0
 offset_right = 853.0
 offset_bottom = 516.0
+
+[node name="AllTrapsSpots" type="Control" parent="." unique_id=2118383182]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="TrapSpot" parent="AllTrapsSpots" unique_id=2001169031 instance=ExtResource("14_tisq8")]
+position = Vector2(-5295, 950)
+gizmo_extents = 100.0
+
+[node name="TrapSpot2" parent="AllTrapsSpots" unique_id=904238641 instance=ExtResource("14_tisq8")]
+position = Vector2(-4476, 950)
+gizmo_extents = 100.0
+
+[node name="TrapSpot3" parent="AllTrapsSpots" unique_id=986889368 instance=ExtResource("14_tisq8")]
+position = Vector2(-4158, 950)
+gizmo_extents = 100.0
+
+[node name="TrapSpot4" parent="AllTrapsSpots" unique_id=2127113690 instance=ExtResource("14_tisq8")]
+position = Vector2(-3320, 950)
+gizmo_extents = 100.0
+
+[node name="TrapSpot5" parent="AllTrapsSpots" unique_id=614657250 instance=ExtResource("14_tisq8")]
+position = Vector2(-2427, 950)
+gizmo_extents = 100.0
+
+[node name="TrapSpot6" parent="AllTrapsSpots" unique_id=33818940 instance=ExtResource("14_tisq8")]
+position = Vector2(-2085, 950)
+gizmo_extents = 100.0
+
+[node name="TrapSpot7" parent="AllTrapsSpots" unique_id=1978178633 instance=ExtResource("14_tisq8")]
+position = Vector2(-1227, 950)
+gizmo_extents = 100.0
+
+[node name="TrapSpot8" parent="AllTrapsSpots" unique_id=964058256 instance=ExtResource("14_tisq8")]
+position = Vector2(-308, 950)
+gizmo_extents = 100.0
+
+[node name="TrapSpot9" parent="AllTrapsSpots" unique_id=54976307 instance=ExtResource("14_tisq8")]
+position = Vector2(-88, 950)
+gizmo_extents = 100.0
+
+[node name="Turret" parent="AllTrapsSpots/TrapSpot9" unique_id=856423981 instance=ExtResource("14_nn8hy")]
+offset_top = -180.0
+offset_bottom = -180.0
 
 [connection signal="timeout" from="DayAfternoon" to="." method="_on_day_afternoon_timeout"]
 [connection signal="timeout" from="Night" to="." method="_on_night_timeout"]

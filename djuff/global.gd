@@ -3,10 +3,12 @@ extends Node2D
 @export var home_life = 5
 @export var player_life = 1
 
-@export var day_time = 10
+@export var day_time = 40
 @export var night_time = 10
 
 @export var inventory_col_size = 3
+
+@export var traps_energy = 3
 
 func convert_json(path):
 	var file_json = FileAccess.open(path, FileAccess.READ)

@@ -1,17 +1,37 @@
 [gd_scene format=3 uid="uid://bau0rqleul42u"]
 
 [ext_resource type="Script" uid="uid://bej1ahdl8xut5" path="res://Game/Scripts/monster.gd" id="1_8rs5l"]
-[ext_resource type="Texture2D" uid="uid://bx7vq5q4fjwdv" path="res://Game/Images/monster.png" id="1_b0y4i"]
+[ext_resource type="Texture2D" uid="uid://cu7q0xcqfo70d" path="res://Game/Images/monster_idle.png" id="2_j0cdf"]
 [ext_resource type="Script" uid="uid://dvkyxm4s0m2pe" path="res://Game/Scripts/monster_life.gd" id="3_7whhr"]
+[ext_resource type="Texture2D" uid="uid://1e856bqvqfw5" path="res://Game/Images/monster_walk_1.png" id="3_chnu0"]
+[ext_resource type="Texture2D" uid="uid://cefnlf2wab5lw" path="res://Game/Images/monster_walk_2.png" id="4_3uxt0"]
+[ext_resource type="Texture2D" uid="uid://bev0aq72xmovj" path="res://Game/Images/monster_walk_3.png" id="5_3uxt0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rs5l"]
-size = Vector2(295, 345)
+size = Vector2(295, 321)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7whhr"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_b0y4i")
+"texture": ExtResource("2_j0cdf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_chnu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3uxt0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3uxt0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3uxt0")
 }],
 "loop": true,
 "name": &"walk",
@@ -19,19 +39,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7whhr"]
-size = Vector2(295, 345)
+size = Vector2(295, 321)
 
 [node name="Monster" type="CharacterBody2D" unique_id=79964215 groups=["Monsters"]]
 collision_layer = 4
 script = ExtResource("1_8rs5l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1365517570]
-position = Vector2(0.5, -0.5)
+position = Vector2(0.5, -12.5)
 shape = SubResource("RectangleShape2D_8rs5l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=615782744]
 sprite_frames = SubResource("SpriteFrames_7whhr")
 animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.9752781
 
 [node name="Monster_life" type="HBoxContainer" parent="." unique_id=1959543293]
 offset_left = -537.0
@@ -46,7 +68,7 @@ collision_layer = 4
 collision_mask = 194
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1767777218]
-position = Vector2(0.5, -0.5)
+position = Vector2(0.5, -12.5)
 shape = SubResource("RectangleShape2D_7whhr")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -12,6 +12,7 @@ var debuff
 var enemies_list = []
 
 func _ready():
+	$SpotNumber.visible = false
 	$AnimatedSprite2D.flip_h = false
 	$AnimatedSprite2D.offset = Vector2(0,0)
 	global = $"/root/Global"
@@ -26,9 +27,8 @@ func _ready():
 	# $AnimatedSprite2D.flip_h = true
 	# $AnimatedSprite2D.offset = Vector2(120,0)
 
-
-
 func _process(delta):
+
 	if enemies_list != []:
 		var enemy_global_position = -99999
 		var index
@@ -39,13 +39,12 @@ func _process(delta):
 		if enemies_list[index].global_position.x > $Sprite2D/Center.global_position.x:
 			dir_left = false
 			$AnimatedSprite2D.flip_h = true
-			$AnimatedSprite2D.offset = Vector2(120,0)
+			$AnimatedSprite2D.offset = Vector2(127,0)
 
 		else:
 			dir_left = true
 			$AnimatedSprite2D.flip_h = false
 			$AnimatedSprite2D.offset = Vector2(0,0)
-
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Monsters"):
@@ -61,11 +60,15 @@ func shoot():
 		bullet_child.global_position = $AnimatedSprite2D/Left.global_position
 
 		bullet_child.setup(-1, strength)
-		get_parent().add_child(bullet_child)
+		
+		var teste = get_parent().get_parent().get_parent()
+		teste.add_child(bullet_child)
+		
 	else:
 		bullet_child.global_position = $AnimatedSprite2D/Right.global_position
 		bullet_child.setup(1, strength)
-		get_parent().add_child(bullet_child)
+		var teste = get_parent().get_parent().get_parent()
+		teste.add_child(bullet_child)
 
 	$Cooldown.start(cooldown)
 	

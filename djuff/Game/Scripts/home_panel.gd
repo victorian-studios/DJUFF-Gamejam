@@ -5,6 +5,9 @@ var shop_items
 var shop_items_list = []
 var shop_items_list_index = 0
 
+var choosen_trap = {}
+@export var preparing_trap = false
+
 func _ready():
 	global = $"/root/Global"
 	var shop_items = global.read_json("all", "res://Game/Jsons/traps.json")
@@ -32,6 +35,8 @@ func update_shop(index):
 		control.get_child(1).text = "X"+str(int(price["qtd"]))
 		control_count += 1
 
+	choosen_trap = shop_items_list[index]
+
 func _on_close_pressed():
 	get_parent().get_node("Player").can_control = true
 	visible = false
@@ -51,3 +56,14 @@ func _on_left_shop_pressed():
 		shop_items_list_index = (shop_items_list.size() - 1)
 
 	update_shop(shop_items_list_index)
+
+func _on_prepare_trap_pressed():
+	preparing_trap = true
+	visible = false
+	get_parent().get_node("Player").can_control = true
+	get_parent().get_node("Home").set_panel_text(preparing_trap, choosen_trap["price"])
+	# print(choosen_trap)
+
+func cancel_trap():
+	preparing_trap = false
+	get_parent().get_node("Home").set_panel_text(preparing_trap, [])

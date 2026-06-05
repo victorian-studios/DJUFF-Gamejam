@@ -48,7 +48,6 @@ collision_mask = 25
 script = ExtResource("1_gctag")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1655957987]
-texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_e2mpb")
 animation = &"idle"
 autoplay = "idle"

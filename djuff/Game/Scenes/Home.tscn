@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://byhkhpllvfe03" path="res://Game/Images/home_normal.png" id="1_a53ve"]
 [ext_resource type="Script" uid="uid://dmvy2nb5b04qy" path="res://Game/Scripts/home.gd" id="1_g5idm"]
 [ext_resource type="Script" uid="uid://bqx1bfcl30twp" path="res://Game/Scripts/home_life.gd" id="2_oiein"]
+[ext_resource type="Texture2D" uid="uid://cp57jo1ens20f" path="res://Game/Images/home_panel_small.png" id="4_ghef2"]
+[ext_resource type="Texture2D" uid="uid://nbls543vm5uk" path="res://Game/Images/wood_shop.png" id="5_r6hok"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8o5p1"]
 animations = [{
@@ -34,14 +36,17 @@ size = Vector2(34, 261)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g5idm"]
 animations = [{
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ghef2")
+}],
 "loop": true,
 "name": &"normal",
 "speed": 5.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r6hok"]
-size = Vector2(426, 219)
+size = Vector2(388, 196)
 
 [node name="Home" type="Node2D" unique_id=601810387]
 script = ExtResource("1_g5idm")
@@ -88,6 +93,8 @@ position = Vector2(14, 1.5)
 shape = SubResource("RectangleShape2D_ghef2")
 
 [node name="Panel" type="AnimatedSprite2D" parent="." unique_id=737355150]
+position = Vector2(1.1444092e-05, -28.5)
+scale = Vector2(1.2908164, 1.2908163)
 sprite_frames = SubResource("SpriteFrames_g5idm")
 animation = &"normal"
 
@@ -99,13 +106,119 @@ collision_mask = 2
 shape = SubResource("RectangleShape2D_r6hok")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel" unique_id=1513596970]
-offset_left = -50.0
-offset_top = -174.0
-offset_right = 50.0
-offset_bottom = -114.0
-theme_override_constants/outline_size = 19
-theme_override_font_sizes/normal_font_size = 40
+offset_left = -193.67586
+offset_top = -228.1502
+offset_right = 192.12651
+offset_bottom = -97.73123
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[wave]E[/wave]"
+text = "[wave]E - Place Material
+Q - Cancel Trap / Discard Materials[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelImage" type="Control" parent="Panel" unique_id=1498938162]
+layout_mode = 3
+anchor_left = 0.036000002
+anchor_top = 0.061000004
+anchor_right = 0.96400005
+anchor_bottom = 0.94400007
+offset_left = -193.968
+offset_top = -97.956
+offset_right = -194.03201
+offset_bottom = -98.02402
+
+[node name="1" type="Control" parent="Panel/PanelImage" unique_id=493555763]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 21.185768
+offset_top = 36.806316
+offset_right = -338.81424
+offset_bottom = -136.19368
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Panel/PanelImage/1" unique_id=1236284346]
+layout_mode = 0
+offset_right = 121.0
+offset_bottom = 122.0
+texture = ExtResource("5_r6hok")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/PanelImage/1" unique_id=158922644]
+layout_mode = 0
+offset_left = -23.241106
+offset_top = 122.36842
+offset_right = 145.90248
+offset_bottom = 186.97675
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Completed!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="2" type="Control" parent="Panel/PanelImage" unique_id=632492200]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.99700004
+offset_left = 139.18578
+offset_top = 36.806316
+offset_right = -220.81422
+offset_bottom = 268.32532
+scale = Vector2(0.6, 0.6)
+
+[node name="TextureRect" type="TextureRect" parent="Panel/PanelImage/2" unique_id=1908029301]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_r6hok")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/PanelImage/2" unique_id=1188023158]
+layout_mode = 0
+offset_left = -23.241106
+offset_top = 122.36842
+offset_right = 145.90248
+offset_bottom = 186.97675
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Completed!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="3" type="Control" parent="Panel/PanelImage" unique_id=6125598]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 266.18576
+offset_top = 36.806316
+offset_right = -93.81424
+offset_bottom = 267.8063
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.6, 0.6)
+
+[node name="TextureRect" type="TextureRect" parent="Panel/PanelImage/3" unique_id=121096315]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_r6hok")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel/PanelImage/3" unique_id=1602347303]
+layout_mode = 0
+offset_left = -23.241106
+offset_top = 122.36842
+offset_right = 145.90248
+offset_bottom = 186.97675
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "Completed!"
 horizontal_alignment = 1
 vertical_alignment = 1

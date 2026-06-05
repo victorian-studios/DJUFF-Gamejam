@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx7vq5q4fjwdv"
-path="res://.godot/imported/monster.png-4346d86f5604a4dc8474da2c7c9530df.ctex"
+uid="uid://bq6vs5r7ah8pt"
+path="res://.godot/imported/shop_button_select.png-1e83ddb9b84e84a12581ca2cbf3be990.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Game/Images/monster.png"
-dest_files=["res://.godot/imported/monster.png-4346d86f5604a4dc8474da2c7c9530df.ctex"]
+source_file="res://Game/Images/shop_button_select.png"
+dest_files=["res://.godot/imported/shop_button_select.png-1e83ddb9b84e84a12581ca2cbf3be990.ctex"]
 
 [params]
 

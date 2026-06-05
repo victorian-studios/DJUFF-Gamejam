@@ -6,7 +6,7 @@ const JUMP_VELOCITY = -500.0
 
 var hud
 
-var current_slot
+@export var current_slot = ""
 var new_slot
 var can_interact = false
 var item
@@ -45,8 +45,11 @@ func _process(delta):
 				get_parent().add_inventory(item)
 
 			elif item.is_in_group("HomeInteract") and can_interact:
-				get_parent().open_house_panel()
-			
+				get_parent().open_house_panel("interact")
+		
+		if Input.is_action_just_pressed("cancel") and item.is_in_group("HomeInteract") and can_interact:
+			get_parent().open_house_panel("cancel")
+
 		if Input.is_action_just_pressed("slot_1"):
 			select_slot(1)
 
@@ -94,4 +97,4 @@ func _on_area_2d_area_exited(area):
 			can_interact = false
 
 		if area.is_in_group("HomeInteract"):
-			item.get_parent().get_node("RichTextLabel").visible = false
+			area.get_parent().get_node("RichTextLabel").visible = false

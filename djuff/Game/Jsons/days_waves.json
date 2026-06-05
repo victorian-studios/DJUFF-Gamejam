@@ -1,44 +1,44 @@
 {
-    "day_1":
-    [
-        {
-            "qtd": 1,
-            "enemy": "werewolf"
-        }
-    ],
-    "day_2":
-    [
-        {
-            "qtd": 3,
-            "enemy": "werewolf"
-        }
-    ],
-    "day_3":
-    [
-        {
-            "qtd": 3,
-            "enemy": "werewolf"
-        }
-    ],
-    "day_4":
-    [
-        {
-            "qtd": 3,
-            "enemy": "werewolf"
-        }
-    ],
-    "day_5":
-    [
-        {
-            "qtd": 3,
-            "enemy": "werewolf"
-        }
-    ],
-    "day_6":
-    [
-        {
-            "qtd": 3,
-            "enemy": "werewolf"
-        }
-    ]
+	"day_1":
+	[
+		{
+			"qtd": 3,
+			"enemy": "werewolf"
+		}
+	],
+	"day_2":
+	[
+		{
+			"qtd": 3,
+			"enemy": "werewolf"
+		}
+	],
+	"day_3":
+	[
+		{
+			"qtd": 3,
+			"enemy": "werewolf"
+		}
+	],
+	"day_4":
+	[
+		{
+			"qtd": 3,
+			"enemy": "werewolf"
+		}
+	],
+	"day_5":
+	[
+		{
+			"qtd": 3,
+			"enemy": "werewolf"
+		}
+	],
+	"day_6":
+	[
+		{
+			"qtd": 3,
+			"enemy": "werewolf"
+		}
+	]
 }
