@@ -48,7 +48,6 @@ func _process(delta):
 				get_parent().open_house_panel()
 			
 		if Input.is_action_just_pressed("slot_1"):
-			print("q")
 			select_slot(1)
 
 		if Input.is_action_just_pressed("slot_2"):

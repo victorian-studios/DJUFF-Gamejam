@@ -46,9 +46,6 @@ func _process(delta):
 			$AnimatedSprite2D.flip_h = false
 			$AnimatedSprite2D.offset = Vector2(0,0)
 
-		# print("CENTRO: ", $Sprite2D/Center.global_position)
-		# print(enemy.global_position.x)
-
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("Monsters"):

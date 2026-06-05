@@ -17,7 +17,6 @@ func _ready():
 
 	damage = status["strength"]
 	cooldown = status["cooldown"]
-	print(status)
 	debuff_status = status["debuff"]["status"]
 	debuff_value = status["debuff"]["value"]
 

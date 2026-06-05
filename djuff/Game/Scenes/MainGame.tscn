@@ -12,8 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://qwmenyd2xigq" path="res://Game/Scenes/Spawn.tscn" id="8_wl0j2"]
 [ext_resource type="Script" uid="uid://egnl6lhqx71x" path="res://Game/Scripts/cam_night.gd" id="9_nn8hy"]
 [ext_resource type="PackedScene" uid="uid://dvq1qwitdpumx" path="res://Game/Scenes/Items.tscn" id="11_5bgyh"]
-[ext_resource type="PackedScene" uid="uid://ctdxo6s8bpmwb" path="res://Game/Scenes/Spotlight.tscn" id="12_434vt"]
-[ext_resource type="PackedScene" uid="uid://x8q00cdhvpla" path="res://Game/Scenes/Thorn.tscn" id="13_af85p"]
 [ext_resource type="PackedScene" uid="uid://bjhy4134c63j4" path="res://Game/Scenes/Turret.tscn" id="14_nn8hy"]
 [ext_resource type="PackedScene" uid="uid://bbw6k1xyxlc3y" path="res://Game/Scenes/HomePanel.tscn" id="16_tisq8"]
 
@@ -414,13 +412,19 @@ position = Vector2(-1792, 928)
 position = Vector2(-1200, 928)
 
 [node name="Spot8" type="Marker2D" parent="." unique_id=246544350]
-position = Vector2(-612, 928)
+position = Vector2(-310, 928)
 
 [node name="Spot9" type="Marker2D" parent="." unique_id=1582517059]
-position = Vector2(-303, 928)
+position = Vector2(-42, 929)
+
+[node name="Turret" parent="." unique_id=2047060045 instance=ExtResource("14_nn8hy")]
+offset_left = -83.0
+offset_top = 736.0
+offset_right = -83.0
+offset_bottom = 736.0
 
 [node name="Spawn" parent="." unique_id=2062382681 instance=ExtResource("8_wl0j2")]
-position = Vector2(-2409, 816)
+position = Vector2(-1920, 816)
 
 [node name="Player" parent="." unique_id=221582413 instance=ExtResource("6_o1weo")]
 position = Vector2(1442, 713.00006)
@@ -428,28 +432,8 @@ position = Vector2(1442, 713.00006)
 [node name="HomeNight" type="Marker2D" parent="." unique_id=2099223213]
 position = Vector2(872, 764)
 
-[node name="Spotlight" parent="." unique_id=1150767590 instance=ExtResource("12_434vt")]
-offset_left = -785.0
-offset_top = 693.0
-offset_right = -785.0
-offset_bottom = 693.0
-mouse_filter = 2
-
-[node name="Thorn" parent="." unique_id=1123471750 instance=ExtResource("13_af85p")]
-offset_left = -181.0
-offset_top = 706.0
-offset_right = -181.0
-offset_bottom = 706.0
-mouse_filter = 2
-
-[node name="Turret" parent="." unique_id=2047060045 instance=ExtResource("14_nn8hy")]
-offset_left = -2424.0
-offset_top = 719.0
-offset_right = -2424.0
-offset_bottom = 719.0
-mouse_filter = 2
-
 [node name="HomePanel" parent="." unique_id=2114613122 instance=ExtResource("16_tisq8")]
+visible = false
 offset_left = 853.0
 offset_top = 516.0
 offset_right = 853.0
