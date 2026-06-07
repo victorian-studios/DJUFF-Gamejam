@@ -4,12 +4,10 @@ var werewolf = preload("res://Game/Scenes/Monster.tscn")
 
 # [{ "qtd": 3.0, "enemy": "werewolf" }]
 func spawner(enemies):
-	print(enemies)
 	var global = $"/root/Global"
 	var status
 	for enemy in enemies:
 		for quantity in enemy["qtd"]:
-			print(enemy["qtd"])
 			var enemy_child
 			if enemy["enemy"] == "werewolf":
 				enemy_child = werewolf.instantiate()

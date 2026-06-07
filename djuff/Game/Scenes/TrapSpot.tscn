@@ -1,3 +1,64 @@
 [gd_scene format=3 uid="uid://dm1bk5vs46a38"]
 
+[ext_resource type="Script" uid="uid://b7by5dpol1eey" path="res://Game/Scripts/trap_spot.gd" id="1_yp6eh"]
+[ext_resource type="Texture2D" uid="uid://em1cwrow8hxo" path="res://Game/Images/off.png" id="2_c54qo"]
+[ext_resource type="Texture2D" uid="uid://bsrmgxocsi4om" path="res://Game/Images/empty.png" id="2_e2hig"]
+[ext_resource type="Texture2D" uid="uid://b11sqf6wunvvl" path="res://Game/Images/on.png" id="3_e2hig"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pffa6"]
+size = Vector2(90, 69)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yp6eh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_e2hig")
+}],
+"loop": true,
+"name": &"empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c54qo")
+}],
+"loop": true,
+"name": &"off",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_e2hig")
+}],
+"loop": true,
+"name": &"on",
+"speed": 5.0
+}]
+
 [node name="TrapSpot" type="Marker2D" unique_id=2001169031]
+script = ExtResource("1_yp6eh")
+
+[node name="AreaTrapSpot2" type="Area2D" parent="." unique_id=2000723226 groups=["TrapSpot"]]
+collision_layer = 256
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTrapSpot2" unique_id=1500052746]
+position = Vector2(0, -22.5)
+shape = SubResource("RectangleShape2D_pffa6")
+
+[node name="SpotNumber" type="RichTextLabel" parent="." unique_id=1866650414]
+offset_left = -72.0
+offset_top = -692.0
+offset_right = 71.0
+offset_bottom = -535.0
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/normal_font_size = 100
+bbcode_enabled = true
+text = "[wave]1[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OnOff" type="AnimatedSprite2D" parent="." unique_id=733308775]
+position = Vector2(59, -611)
+sprite_frames = SubResource("SpriteFrames_yp6eh")
+animation = &"empty"

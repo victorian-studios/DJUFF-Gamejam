@@ -9,17 +9,17 @@
 			{
 				"name": "wood",
 				"material": "res://Game/Images/wood_shop.png",
-				"qtd": 2.0
+				"qtd": 1.0
 			},
 			{
 				"name": "screw",
 				"material": "res://Game/Images/screw_shop.png",
-				"qtd": 6.0
+				"qtd": 1.0
 			},
 			{
 				"name": "ingot",
 				"material": "res://Game/Images/ingot_shop.png",
-				"qtd": 4.0
+				"qtd": 1.0
 			}
 		],
 		"energy_cost": 1.0
@@ -34,12 +34,12 @@
 			{
 				"name": "wood",
 				"material": "res://Game/Images/wood_shop.png",
-				"qtd": 6.0
+				"qtd": 1.0
 			},
 			{
 				"name": "screw",
 				"material": "res://Game/Images/screw_shop.png",
-				"qtd": 3.0
+				"qtd": 1.0
 			},
 			{
 				"name": "ingot",
@@ -62,17 +62,17 @@
 			{
 				"name": "wood",
 				"material": "res://Game/Images/wood_shop.png",
-				"qtd": 3.0
+				"qtd": 1.0
 			},
 			{
 				"name": "screw",
 				"material": "res://Game/Images/screw_shop.png",
-				"qtd": 2.0
+				"qtd": 1.0
 			},
 			{
 				"name": "ingot",
 				"material": "res://Game/Images/ingot_shop.png",
-				"qtd": 2.0
+				"qtd": 1.0
 			}
 		],
 		"energy_cost": 1.0

@@ -13,6 +13,30 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_hx8ee")
+}],
+"loop": true,
+"name": &"Spotlight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_c20xo")
+}],
+"loop": true,
+"name": &"Thorn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v0alt")
+}],
+"loop": true,
+"name": &"Turret",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_ifpd7")
 }],
 "loop": true,
@@ -37,30 +61,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_hx8ee")
-}],
-"loop": true,
-"name": &"spotlight",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_c20xo")
-}],
-"loop": true,
-"name": &"thorn",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_v0alt")
-}],
-"loop": true,
-"name": &"turret",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("7_o7slh")
 }],
 "loop": true,
@@ -74,7 +74,7 @@ anchors_preset = 0
 
 [node name="Item" type="AnimatedSprite2D" parent="." unique_id=1924521666]
 sprite_frames = SubResource("SpriteFrames_pb5uk")
-animation = &"empty"
+animation = &"Turret"
 
 [node name="Select" type="Sprite2D" parent="Item" unique_id=410777496]
 visible = false

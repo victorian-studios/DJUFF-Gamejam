@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://dvq1qwitdpumx" path="res://Game/Scenes/Items.tscn" id="11_5bgyh"]
 [ext_resource type="PackedScene" uid="uid://bjhy4134c63j4" path="res://Game/Scenes/Turret.tscn" id="14_nn8hy"]
 [ext_resource type="PackedScene" uid="uid://dm1bk5vs46a38" path="res://Game/Scenes/TrapSpot.tscn" id="14_tisq8"]
+[ext_resource type="PackedScene" uid="uid://ctdxo6s8bpmwb" path="res://Game/Scenes/Spotlight.tscn" id="15_nn8hy"]
+[ext_resource type="PackedScene" uid="uid://x8q00cdhvpla" path="res://Game/Scenes/Thorn.tscn" id="16_fcmt2"]
 [ext_resource type="PackedScene" uid="uid://bbw6k1xyxlc3y" path="res://Game/Scenes/HomePanel.tscn" id="16_tisq8"]
 
 [sub_resource type="Animation" id="Animation_pj2es"]
@@ -284,16 +286,6 @@ _data = {
 &"start_game": SubResource("Animation_vn75q")
 }
 
-[sub_resource type="Gradient" id="Gradient_ifcxl"]
-offsets = PackedFloat32Array(0.006024096, 0.37349397, 0.7891566)
-colors = PackedColorArray(0.6628909, 0.6628909, 0.6628909, 1, 0.4351145, 0.4351145, 0.4351145, 1, 0, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_pj2es"]
-gradient = SubResource("Gradient_ifcxl")
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-fill_to = Vector2(0.95, 0.95)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o1weo"]
 size = Vector2(134, 1081)
 
@@ -336,16 +328,9 @@ position = Vector2(2250, 540)
 texture = ExtResource("3_wl0j2")
 
 [node name="AmbientLight" type="DirectionalLight2D" parent="." unique_id=912023405]
-visible = false
-energy = 0.8
+color = Color(0, 0, 0, 1)
+energy = 0.84
 blend_mode = 1
-
-[node name="PointLight2D" type="PointLight2D" parent="." unique_id=7844996]
-visible = false
-position = Vector2(886, 567.00006)
-scale = Vector2(5, 5)
-energy = 1.5
-texture = SubResource("GradientTexture2D_pj2es")
 
 [node name="HUD" parent="." unique_id=2118517463 instance=ExtResource("4_unl7d")]
 
@@ -359,7 +344,7 @@ position = Vector2(808, 637)
 position = Vector2(960, 540)
 limit_left = -5830
 limit_top = 0
-limit_right = 1910
+limit_right = 1251
 limit_bottom = 1080
 position_smoothing_enabled = true
 script = ExtResource("9_nn8hy")
@@ -392,7 +377,7 @@ position = Vector2(1563, 878)
 position = Vector2(1798, 878)
 
 [node name="Spawn" parent="." unique_id=2062382681 instance=ExtResource("8_wl0j2")]
-position = Vector2(-937, 816)
+position = Vector2(-1886, 816)
 
 [node name="Player" parent="." unique_id=221582413 instance=ExtResource("6_o1weo")]
 position = Vector2(1442, 713.00006)
@@ -442,15 +427,23 @@ gizmo_extents = 100.0
 position = Vector2(-1227, 950)
 gizmo_extents = 100.0
 
+[node name="Spotlight" parent="AllTrapsSpots/TrapSpot7" unique_id=1150767590 instance=ExtResource("15_nn8hy")]
+offset_top = -180.0
+offset_bottom = -180.0
+
 [node name="TrapSpot8" parent="AllTrapsSpots" unique_id=964058256 instance=ExtResource("14_tisq8")]
 position = Vector2(-308, 950)
 gizmo_extents = 100.0
+
+[node name="Thorn" parent="AllTrapsSpots/TrapSpot8" unique_id=1123471750 instance=ExtResource("16_fcmt2")]
+offset_top = -180.0
+offset_bottom = -180.0
 
 [node name="TrapSpot9" parent="AllTrapsSpots" unique_id=54976307 instance=ExtResource("14_tisq8")]
 position = Vector2(-88, 950)
 gizmo_extents = 100.0
 
-[node name="Turret" parent="AllTrapsSpots/TrapSpot9" unique_id=856423981 instance=ExtResource("14_nn8hy")]
+[node name="Turret" parent="AllTrapsSpots/TrapSpot9" unique_id=2047060045 instance=ExtResource("14_nn8hy")]
 offset_top = -180.0
 offset_bottom = -180.0
 

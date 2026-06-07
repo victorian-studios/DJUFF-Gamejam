@@ -7,6 +7,8 @@ extends Node2D
 @onready var night_day
 @onready var hud_inventory
 
+var spots_dict = {}
+
 var waves
 var day = 1
 
@@ -43,6 +45,19 @@ func _ready():
 
 	hud_inventory = $HUD/Inventory/HBoxContainer
 	$HUD.change_hud(false)
+	$HUD.get_node("Energy").max_value = global.traps_energy
+
+	var spots_count = 1
+	for spot in $AllTrapsSpots.get_children():
+		spot.spot_number = spots_count
+		spot.get_node("SpotNumber").text = "[wave]"+str(int(spot.spot_number))+"[/wave]"
+		spot.get_node("OnOff").animation = "empty"
+
+		if spot.get_child_count() > 3:
+			spot.get_node("OnOff").animation = "on"
+		
+		spots_dict[spot.spot_number] = spot
+		spots_count += 1
 
 	# get_tree().paused = true
 
@@ -56,23 +71,54 @@ func night(day):
 	spawn.spawner(waves["day_"+str(day)])
 
 func add_inventory(item):
-	var find_slot = false
-	var selected
+		var find_slot = false
+		var selected
 
-	for slot in hud_inventory.get_children():
-		if slot.get_child(0).animation == "empty":
-			find_slot = true
-			slot.get_child(0).animation = item.get_parent().item_name
-			break
-		
-		if slot.get_child(0).get_child(0).visible == true:
-			selected = slot.get_child(0)
-		
-	if find_slot == false:
-		selected.animation = item.get_parent().item_name
-		
-			# slot.get_child(0).animation = item
+		for slot in hud_inventory.get_children():
+			if slot.get_child(0).animation == "empty":
+				find_slot = true
 
+				if item.is_in_group("Traps"):
+					if item.get_parent().get_parent() is Marker2D:
+						item.get_parent().get_parent().get_node("OnOff").animation = "empty"
+						# print()
+						item.get_parent().work = $Home.update_energy(item.get_parent().energy_value)
+					# if item.get_parent().get_parent() is Marker2D:
+					# 	item.get_parent().get_parent().remove_child(item.get_parent())
+					# 	item.get_parent().get_parent().get_node()
+
+					# global.active_traps[global.active_traps.find(item.get_parent())]
+
+					if global.active_traps.find({"control_trap": item.get_parent()}) < 0:
+						global.active_traps.append({"control_trap":item.get_parent()})
+
+					# var teste = 
+					item.get_parent().reparent($".")
+					
+					(global.active_traps[global.active_traps.find({"control_trap": item.get_parent()})])["control_slot"] = slot
+
+					slot.get_child(0).animation = item.get_parent().trap_name
+
+					item.get_parent().visible = false
+					# item.monitorable = false
+					item.get_parent().process_mode = Node.PROCESS_MODE_DISABLED
+				
+				elif item.is_in_group("Items"):
+					slot.get_child(0).animation = item.get_parent().item_name
+				break
+			
+			if slot.get_child(0).get_child(0).visible == true:
+				selected = slot.get_child(0)
+			
+		if find_slot == false:
+			if item.is_in_group("Traps"):
+				selected.animation = item.get_parent().trap_name
+			
+			elif item.is_in_group("Items"):
+				selected.animation = item.get_parent().item_name
+			
+				# slot.get_child(0).animation = item
+	
 func remove_inventory(type):
 	if type == "item":
 		var total_slots = hud_inventory.get_child_count()
@@ -83,18 +129,79 @@ func remove_inventory(type):
 
 				if !(completed):
 					slot.get_child(0).animation = "empty"
-					slot.get_child(0).get_child(0).visible = false
 
-					if child_index + 1 == total_slots:
-						child_index = 0
-					else:
-						child_index += 1
+				slot.get_child(0).get_child(0).visible = false
 
-					hud_inventory.get_child(child_index).get_child(0).get_child(0).visible = true
-					$Player.current_slot = hud_inventory.get_child(child_index).get_child(0).get_child(0)
+				if child_index + 1 == total_slots:
+					child_index = 0
+				else:
+					child_index += 1
+
+				hud_inventory.get_child(child_index).get_child(0).get_child(0).visible = true
+				$Player.current_slot = hud_inventory.get_child(child_index).get_child(0).get_child(0)
+
 				break
 
 			child_index += 1
+
+	elif type == "trapspot":
+
+		if $Player.current_slot.get_parent().animation == "Turret" or $Player.current_slot.get_parent().animation == "Thorn" or $Player.current_slot.get_parent().animation == "Spotlight":
+
+			# for slot in hud_inventory.get_children():
+			# 	if slot.get_child(0).get_child(0).visible == true:
+			# 		$Player.current_slot = slot.get_child(0).get_child(0)
+				
+			# print($Player.current_slot.get_parent().get_parent(), global.active_traps)
+			# print(global.active_traps.find({"control_slot": $Player.current_slot.get_parent().get_parent(), "control_trap"}))
+
+			var control_trap
+
+			for dict in global.active_traps:
+				if dict["control_slot"] == $Player.current_slot.get_parent().get_parent():
+					control_trap = dict["control_trap"]
+
+			$Player.current_slot.get_parent().animation = "empty"
+
+			# var control_trap = global.active_traps[global.active_traps.find({"control_slot": $Player.current_slot.get_parent().get_parent()})]["control_trap"]
+
+			# print(control_trap)
+
+			var teste = $Player.item.get_parent()
+
+			control_trap.reparent(teste)
+			
+			var teste2 = control_trap.energy_value * -1
+
+			control_trap.work = $Home.update_energy(teste2)
+
+			if control_trap.work == true:
+				teste.get_node("OnOff").animation = "on"
+			else:
+				teste.get_node("OnOff").animation = "off"
+
+			control_trap.global_position = $Player.item.get_parent().global_position
+			# print($Player.item.get_parent().global_position, control_trap.global_position)
+
+			# if !(control_trap.global_position == $Player.item.get_parent().global_position):
+			# 	control_trap.global_position = $Player.item.get_parent().global_position
+			control_trap.position.y = -180.0
+			
+			# print($Player.item.get_parent())
+
+			control_trap.process_mode = Node.PROCESS_MODE_ALWAYS
+			control_trap.visible = true
+			
+
+			# if global.active_traps.find({"control_slot": $Player.current_slot.get_parent().get_parent()}) < 0:
+			# 	print()
+
+			# print(global.active_traps)
+			
+			# print($Player.item, " ", $Player.current_slot)
+
+		# else:
+		# 	pass
 
 func _on_day_afternoon_timeout():
 	animation.play("afternoon_night")
@@ -104,17 +211,17 @@ func _on_day_afternoon_timeout():
 	$CamNight.enabled = true
 	night_day.start()
 	night(day)
-	configure_traps(true)
+	# configure_traps(true)
 	$HomePanel.visible = false
 
-func configure_traps(is_night):
-	var spot_count = 0
-	for spot in $AllTrapsSpots.get_children():
-		spot_count += 1
-		if spot.get_child_count() != 0:
-			var trap = spot.get_child(0)
-			trap.get_node("SpotNumber").visible = is_night
-			trap.get_node("SpotNumber").text = str(spot_count)
+# func configure_traps(is_night):
+
+# 	for spot in $AllTrapsSpots.get_children():
+# 		if spot.get_child_count() > 2:
+# 			# var trap = spot
+# 			# print(spot)
+# 			# trap.get_node("SpotNumber").visible = is_night
+# 			spot.get_node("SpotNumber").text = str(int(spot.spot_number))
 
 func _on_night_timeout():
 	$HUD.change_hud(false)
@@ -122,7 +229,7 @@ func _on_night_timeout():
 	$Player/Camera2D.enabled = true
 	$Player.can_control = true
 	$CamNight.enabled = false
-	configure_traps(false)
+	# configure_traps(false)
 
 func _on_animation_player_animation_finished(anim_name: StringName):
 	if anim_name == "night_day":
@@ -152,3 +259,25 @@ func open_house_panel(type):
 
 		elif type == "cancel":
 			$HomePanel.cancel_trap()
+
+func turn_traps(spot_number):
+	var choosen_spot = spots_dict.get(spot_number)
+	
+	if choosen_spot.get_child_count() < 4: #MUDAR
+		print("NAO TEM ARMADILHA AQUI MERMAO")
+		return false
+	else:
+		for spots_child in choosen_spot.get_children():
+			if spots_child is Control and !(spots_child is RichTextLabel) :
+				print(choosen_spot, spots_child)
+				var teste = spots_child.energy_value
+				if spots_child.work == false:
+					teste = spots_child.energy_value * -1
+				print(spots_child.work)
+				spots_child.work = get_node("Home").update_energy(teste)
+				if spots_child.work == true:
+					choosen_spot.get_node("OnOff").animation = "on"
+				else:
+					choosen_spot.get_node("OnOff").animation = "off"
+				# print(spots_child.work)
+				return spots_child.work

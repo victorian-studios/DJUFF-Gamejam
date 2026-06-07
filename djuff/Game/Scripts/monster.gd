@@ -42,11 +42,11 @@ func _on_area_2d_body_entered(body: Node2D):
 		
 
 
-# func _on_area_2d_area_entered(area):
-# 	if area.is_in_group("Damage"):
-# 		if life > 0:
-# 			if life - (area.get_parent()).damage > 0:
-# 				life = life - (area.get_parent()).damage
-# 				$Monster_life.updateHearts(life)
-# 			else:
-# 				queue_free()
+func _on_area_2d_area_entered(area):
+	if area.is_in_group("Damage") and area.get_parent().work:
+		if life > 0:
+			if life - (area.get_parent()).damage > 0:
+				life = life - (area.get_parent()).damage
+				$Monster_life.updateHearts(life)
+			else:
+				queue_free()

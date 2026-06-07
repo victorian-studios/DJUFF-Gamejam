@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ceyjife33ijpx" path="res://Menu/Images/button_credits.png" id="3_p4p8b"]
 [ext_resource type="Texture2D" uid="uid://cj70ap7t6pkuy" path="res://Menu/Images/button_htp_select.png" id="4_1lm7l"]
 [ext_resource type="Texture2D" uid="uid://bocgp45p7xn82" path="res://Menu/Images/button_credits_select.png" id="6_ttipc"]
-[ext_resource type="Texture2D" uid="uid://d37jwvdbjrgvq" path="res://Menu/Images/credits_screen.png" id="8_ttipc"]
+[ext_resource type="Texture2D" uid="uid://b8ol5yfnoyg2w" path="res://Menu/Images/credits_screen.png" id="8_ttipc"]
 [ext_resource type="Texture2D" uid="uid://dr7b6643m45cc" path="res://Menu/Images/close.png" id="9_oxlmi"]
 [ext_resource type="Texture2D" uid="uid://dm8svmymxirvt" path="res://Menu/Images/close_select.png" id="10_oqrcm"]
 [ext_resource type="Texture2D" uid="uid://dq13la3lxcdkw" path="res://Menu/Images/fade.png" id="12_b8cl7"]
@@ -373,38 +373,44 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1.0
-offset_top = 309.0
+offset_top = 566.0
 offset_right = 2939.2275
-offset_bottom = 1180.8989
+offset_bottom = 787.266
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.395, 0.395)
-theme_override_constants/separation = 50
+theme_override_constants/separation = 150
 alignment = 1
 
 [node name="Play" type="TextureButton" parent="Botoes/BotoesContainer" unique_id=1223122905]
+custom_minimum_size = Vector2(801, 301)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("1_332dp")
 texture_hover = ExtResource("2_wdime")
+stretch_mode = 0
 
 [node name="HowToPlay" type="TextureButton" parent="Botoes/BotoesContainer" unique_id=2142922211]
+custom_minimum_size = Vector2(801, 301)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("2_y21l4")
 texture_hover = ExtResource("4_1lm7l")
+stretch_mode = 0
 
 [node name="Credits" type="TextureButton" parent="Botoes/BotoesContainer" unique_id=729057791]
+custom_minimum_size = Vector2(801, 301)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("3_p4p8b")
 texture_hover = ExtResource("6_ttipc")
+stretch_mode = 0
 
 [node name="Screens" type="Control" parent="." unique_id=1095493538]
 layout_mode = 3
@@ -550,6 +556,7 @@ libraries/ = SubResource("AnimationLibrary_wtnjr")
 speed_scale = 2.0
 
 [node name="Fade" type="Sprite2D" parent="." unique_id=335832378]
+visible = false
 position = Vector2(960, 540)
 texture = ExtResource("12_b8cl7")
 

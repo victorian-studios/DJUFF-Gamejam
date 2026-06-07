@@ -43,6 +43,7 @@ size = Vector2(295, 321)
 
 [node name="Monster" type="CharacterBody2D" unique_id=79964215 groups=["Monsters"]]
 collision_layer = 4
+collision_mask = 65
 script = ExtResource("1_8rs5l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1365517570]
@@ -65,7 +66,7 @@ script = ExtResource("3_7whhr")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=289735301]
 collision_layer = 4
-collision_mask = 194
+collision_mask = 66
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1767777218]
 position = Vector2(0.5, -12.5)

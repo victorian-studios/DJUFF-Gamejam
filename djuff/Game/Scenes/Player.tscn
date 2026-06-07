@@ -66,7 +66,7 @@ script = ExtResource("3_e2mpb")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=899446979]
 position = Vector2(0, -1)
-limit_left = -4080
+limit_left = -5830
 limit_top = -503
 limit_right = 1920
 limit_bottom = 1080
@@ -74,7 +74,7 @@ position_smoothing_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1038736935]
 collision_layer = 2
-collision_mask = 164
+collision_mask = 420
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=643825976]
 position = Vector2(1.666666, 1.3333359)

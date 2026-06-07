@@ -36,6 +36,7 @@ func update_shop(index):
 		control_count += 1
 
 	choosen_trap = shop_items_list[index]
+	global.chosen_trap = shop_items_list[index]["name"]
 
 func _on_close_pressed():
 	get_parent().get_node("Player").can_control = true
@@ -62,7 +63,6 @@ func _on_prepare_trap_pressed():
 	visible = false
 	get_parent().get_node("Player").can_control = true
 	get_parent().get_node("Home").set_panel_text(preparing_trap, choosen_trap["price"])
-	# print(choosen_trap)
 
 func cancel_trap():
 	preparing_trap = false

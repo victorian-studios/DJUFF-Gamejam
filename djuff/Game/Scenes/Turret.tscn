@@ -18,6 +18,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nlcd8"]
 size = Vector2(879, 246)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywa2e"]
+size = Vector2(185, 228)
+
 [node name="Turret" type="Control" unique_id=2047060045]
 layout_mode = 3
 anchors_preset = 15
@@ -26,6 +29,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ywa2e")
+
+[node name="SpotNumber" type="RichTextLabel" parent="." unique_id=256236676]
+visible = false
+layout_mode = 0
+offset_left = 1.0
+offset_top = -163.0
+offset_right = 111.0
+offset_bottom = -57.0
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[wave]1[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=453616310]
 texture = ExtResource("1_h63c6")
@@ -49,8 +66,8 @@ position = Vector2(17, 253)
 position = Vector2(483, 253)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1138341574]
-collision_layer = 16
-collision_mask = 6
+collision_layer = 48
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=396374081]
 position = Vector2(23.5, 72)
@@ -59,18 +76,13 @@ shape = SubResource("RectangleShape2D_nlcd8")
 [node name="Cooldown" type="Timer" parent="." unique_id=335075446]
 one_shot = true
 
-[node name="SpotNumber" type="RichTextLabel" parent="." unique_id=256236676]
-layout_mode = 0
-offset_left = 1.0
-offset_top = -163.0
-offset_right = 111.0
-offset_bottom = -57.0
-theme_override_constants/outline_size = 30
-theme_override_font_sizes/normal_font_size = 60
-bbcode_enabled = true
-text = "[wave]1[/wave]"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="GetTrap" type="Area2D" parent="." unique_id=1390279536 groups=["Traps"]]
+collision_layer = 48
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GetTrap" unique_id=1612428800]
+position = Vector2(61.5, 70)
+shape = SubResource("RectangleShape2D_ywa2e")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

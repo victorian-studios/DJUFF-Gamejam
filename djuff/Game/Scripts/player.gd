@@ -10,6 +10,7 @@ var hud
 var new_slot
 var can_interact = false
 var item
+var trap_on_floor = null
 
 @export var can_control = true
 
@@ -41,7 +42,16 @@ func _process(delta):
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 		
 		if Input.is_action_just_pressed("interact") and can_interact:
-			if item.is_in_group("Items"):
+			
+			if trap_on_floor != null:
+				if trap_on_floor.is_in_group("Traps"):
+					get_parent().add_inventory(trap_on_floor)
+
+			elif item.is_in_group("TrapSpot"):
+				if item.get_parent().get_child_count() < 4: #MUDAR
+					get_parent().remove_inventory("trapspot")
+			
+			elif item.is_in_group("Items"):
 				get_parent().add_inventory(item)
 
 			elif item.is_in_group("HomeInteract") and can_interact:
@@ -67,6 +77,7 @@ func _process(delta):
 
 
 func select_slot(number):
+	
 	new_slot = hud.slot_list[number-1].get_child(0).get_child(0)
 
 	
@@ -78,21 +89,39 @@ func select_slot(number):
 		current_slot = new_slot
 		# current_slot.visible = !(current_slot.visible)
 		# new_slot.visible = !(new_slot.visible)
-
+	# print(current_slot)
 	# current_slot = 
 	# current_slot.visible = !(current_slot.visible)
 
 
 func _on_area_2d_area_entered(area):
 	if can_control == true:
-		if area.is_in_group("Items") or area.is_in_group("HomeInteract"):
+		if area.is_in_group("Traps"):
+			# print("TUMBALACATUMBA")
+			# trap_on_floor = true
+			trap_on_floor = area
 			can_interact = true
-			item = area
-		if area.is_in_group("HomeInteract"):
-			item.get_parent().get_node("RichTextLabel").visible = true
+			# item = area
+
+		if trap_on_floor == null:
+
+			if area.is_in_group("TrapSpot"):
+				can_interact = true
+				item = area
+
+			if area.is_in_group("Items") or area.is_in_group("HomeInteract"):
+				can_interact = true
+				item = area
+
+			if area.is_in_group("HomeInteract"):
+				item.get_parent().get_node("RichTextLabel").visible = true
 
 func _on_area_2d_area_exited(area):
 	if can_control == true:
+		if area.is_in_group("Traps"):
+			trap_on_floor = null
+			can_interact = false
+
 		if area.is_in_group("Items") or area.is_in_group("HomeInteract"):
 			can_interact = false
 
