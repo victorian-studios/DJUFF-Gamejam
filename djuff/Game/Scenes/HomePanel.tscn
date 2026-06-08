@@ -161,9 +161,9 @@ texture_hover = ExtResource("3_x6ghn")
 
 [node name="RightShop" type="TextureButton" parent="." unique_id=1168902710]
 layout_mode = 0
-offset_left = 368.0
+offset_left = 356.0
 offset_top = 92.0
-offset_right = 469.0
+offset_right = 457.0
 offset_bottom = 193.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_6bay0")
@@ -171,13 +171,14 @@ texture_hover = ExtResource("7_mtstg")
 
 [node name="LeftShop" type="TextureButton" parent="." unique_id=360889869]
 layout_mode = 0
-offset_left = -468.0
+offset_left = -460.0
 offset_top = 92.0
-offset_right = -367.0
+offset_right = -359.0
 offset_bottom = 193.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("6_6bay0")
 texture_hover = ExtResource("7_mtstg")
+flip_h = true
 
 [node name="PrepareTrap" type="TextureButton" parent="." unique_id=1472550048]
 layout_mode = 0

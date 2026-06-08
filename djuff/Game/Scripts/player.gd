@@ -14,7 +14,10 @@ var trap_on_floor = null
 
 @export var can_control = true
 
+var global
+
 func _ready():
+	global = $"/root/Global"
 	hud = get_parent().get_node("HUD")
 	current_slot = hud.slot_list[0].get_child(0).get_child(0)
 	# get_node("Inventory")
@@ -48,7 +51,7 @@ func _process(delta):
 					get_parent().add_inventory(trap_on_floor)
 
 			elif item.is_in_group("TrapSpot"):
-				if item.get_parent().get_child_count() < 4: #MUDAR
+				if item.get_parent().get_child_count() < 5: #MUDAR
 					get_parent().remove_inventory("trapspot")
 			
 			elif item.is_in_group("Items"):
@@ -95,6 +98,7 @@ func select_slot(number):
 
 
 func _on_area_2d_area_entered(area):
+
 	if can_control == true:
 		if area.is_in_group("Traps"):
 			# print("TUMBALACATUMBA")
@@ -127,3 +131,15 @@ func _on_area_2d_area_exited(area):
 
 		if area.is_in_group("HomeInteract"):
 			area.get_parent().get_node("RichTextLabel").visible = false
+
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("Monsters"):
+		if global.player_life > 0:
+			if global.player_life - body.strength > 0:
+				global.player_life = global.player_life - body.strength
+				$Player_life.updateHearts(global.player_life)
+			else:
+				get_parent().game_over()
+				# print("morri")
+		# get_parent().game_over()

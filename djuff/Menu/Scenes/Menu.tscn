@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dr7b6643m45cc" path="res://Menu/Images/close.png" id="9_oxlmi"]
 [ext_resource type="Texture2D" uid="uid://dm8svmymxirvt" path="res://Menu/Images/close_select.png" id="10_oqrcm"]
 [ext_resource type="Texture2D" uid="uid://dq13la3lxcdkw" path="res://Menu/Images/fade.png" id="12_b8cl7"]
+[ext_resource type="Texture2D" uid="uid://cmdvl204yx03t" path="res://Menu/Images/victoria.png" id="13_wtnjr"]
+[ext_resource type="Texture2D" uid="uid://qei1ri0rpwx1" path="res://Menu/Images/victoria_select.png" id="14_co3wy"]
 
 [sub_resource type="Animation" id="Animation_3tbja"]
 length = 0.001
@@ -412,7 +414,61 @@ texture_normal = ExtResource("3_p4p8b")
 texture_hover = ExtResource("6_ttipc")
 stretch_mode = 0
 
+[node name="RichTextLabel" type="RichTextLabel" parent="Botoes" unique_id=1043657532]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42200002
+anchor_top = 0.55
+anchor_right = 0.578
+anchor_bottom = 0.64400005
+offset_left = -0.24005127
+offset_right = 0.23999023
+offset_bottom = 0.47991943
+mouse_filter = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 50
+text = "Play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Botoes" unique_id=340035000]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42200002
+anchor_top = 0.71500003
+anchor_right = 0.578
+anchor_bottom = 0.809
+offset_left = -0.24005127
+offset_top = -0.2000122
+offset_right = 0.23999023
+offset_bottom = 0.27996826
+mouse_filter = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 50
+text = "How to play"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="Botoes" unique_id=276337479]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.42200002
+anchor_top = 0.88000005
+anchor_right = 0.578
+anchor_bottom = 0.97400004
+offset_left = -0.24005127
+offset_top = -0.40008545
+offset_right = 0.23999023
+offset_bottom = 0.079956055
+mouse_filter = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 50
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Screens" type="Control" parent="." unique_id=1095493538]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -421,7 +477,6 @@ size_flags_vertical = 4
 mouse_filter = 2
 
 [node name="HowToPlay" type="Control" parent="Screens" unique_id=2108465643]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -454,14 +509,23 @@ layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 485.0
-offset_top = 314.0
-offset_right = -485.0
+offset_left = 494.0
+offset_top = 277.0
+offset_right = -494.0
 offset_bottom = -145.0
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 33
 bbcode_enabled = true
-text = "Se vira menó"
-horizontal_alignment = 1
+text = "During the day, organize your defenses: Choose the trap you want to build at the shop, gather the resources needed to complete it, and place it around the map.
+During the night, face hordes of enemies! Activating traps consumes energy, so switch between them strategically to manage your energy usage.
+
+Controls:
+[ul]
+[u]E[/u] → Interact
+(Day only) [u]Enter[/u] → Skip to night
+(Day only) [u]A[/u], [u]D[/u], [u]Space[/u] → Move the character
+[u]Esc[/u] → Pause the game
+(Night only) [u]1[/u], [u]2[/u], [u]3[/u], [u]4[/u], [u]5[/u], [u]6[/u], [u]7[/u], [u]8[/u], [u]9[/u] → Toggle traps on or off
+[/ul]"
 vertical_alignment = 1
 
 [node name="CloseHtp" type="TextureButton" parent="Screens/HowToPlay" unique_id=855725217]
@@ -530,7 +594,7 @@ Programmer and Artist
 Game designer and Programmer
 [hr]
 [ul][wave]Musics and SFX[/wave][/ul]
-XXXXXXX"
+None :("
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -560,9 +624,41 @@ visible = false
 position = Vector2(960, 540)
 texture = ExtResource("12_b8cl7")
 
+[node name="TextureButton" type="TextureButton" parent="." unique_id=815536714]
+offset_left = 1667.0
+offset_top = 820.0
+offset_right = 2160.0
+offset_bottom = 1330.0
+scale = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_wtnjr")
+texture_hover = ExtResource("14_co3wy")
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=154680274]
+offset_right = 1922.0
+offset_bottom = 622.0
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/normal_font_size = 110
+text = "Werewolves
+vs. 
+Scientist"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title2" type="RichTextLabel" parent="." unique_id=652536045]
+offset_top = 999.0
+offset_right = 274.0
+offset_bottom = 1079.0
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 50
+text = "Prototype"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [connection signal="pressed" from="Botoes/BotoesContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Botoes/BotoesContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="Botoes/BotoesContainer/Credits" to="." method="_on_credits_pressed"]
 [connection signal="pressed" from="Screens/HowToPlay/CloseHtp" to="." method="_on_close_htp_pressed"]
 [connection signal="pressed" from="Screens/Credits/CloseCredits" to="." method="_on_close_credits_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

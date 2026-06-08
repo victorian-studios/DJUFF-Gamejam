@@ -33,6 +33,7 @@ func turn_on_or_off(energy):
 	if get_parent().name == "MainGame":
 		work = false
 	else:
+		get_parent().get_parent().get_parent().current_trap = $"."
 		work = get_parent().get_parent().get_parent().get_node("Home").update_energy(energy)
 
 

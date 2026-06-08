@@ -10,8 +10,8 @@ extends Node2D
 @export var home_life = 5
 @export var player_life = 1
 
-@export var day_time = 40
-@export var night_time = 30
+@export var day_time = 120
+@export var night_time = 60
 
 @export var inventory_col_size = 3
 

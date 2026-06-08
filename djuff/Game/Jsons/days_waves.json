@@ -2,7 +2,7 @@
 	"day_1":
 	[
 		{
-			"qtd": 1,
+			"qtd": 3,
 			"enemy": "werewolf"
 		}
 	],
@@ -16,28 +16,28 @@
 	"day_3":
 	[
 		{
-			"qtd": 3,
+			"qtd": 6,
 			"enemy": "werewolf"
 		}
 	],
 	"day_4":
 	[
 		{
-			"qtd": 3,
+			"qtd": 6,
 			"enemy": "werewolf"
 		}
 	],
 	"day_5":
 	[
 		{
-			"qtd": 3,
+			"qtd": 9,
 			"enemy": "werewolf"
 		}
 	],
 	"day_6":
 	[
 		{
-			"qtd": 3,
+			"qtd": 9,
 			"enemy": "werewolf"
 		}
 	]

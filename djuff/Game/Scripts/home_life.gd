@@ -2,8 +2,6 @@ extends HBoxContainer
 
 @onready var Life = preload("res://Game/Scenes/Life.tscn")
 
-func _ready():
-	setMaxHearts($"/root/Global".home_life)
 
 func setMaxHearts(max : int):
 	for i in range(max):

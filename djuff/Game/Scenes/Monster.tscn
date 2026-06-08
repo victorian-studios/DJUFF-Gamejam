@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bev0aq72xmovj" path="res://Game/Images/monster_walk_3.png" id="5_3uxt0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8rs5l"]
-size = Vector2(295, 321)
+size = Vector2(203, 321)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7whhr"]
 animations = [{
@@ -39,15 +39,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7whhr"]
-size = Vector2(295, 321)
+size = Vector2(230, 321)
 
 [node name="Monster" type="CharacterBody2D" unique_id=79964215 groups=["Monsters"]]
+process_mode = 1
 collision_layer = 4
 collision_mask = 65
 script = ExtResource("1_8rs5l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1365517570]
-position = Vector2(0.5, -12.5)
+position = Vector2(-18.5, -12.5)
 shape = SubResource("RectangleShape2D_8rs5l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=615782744]
@@ -69,7 +70,7 @@ collision_layer = 4
 collision_mask = 66
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1767777218]
-position = Vector2(0.5, -12.5)
+position = Vector2(-19, -12.5)
 shape = SubResource("RectangleShape2D_7whhr")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

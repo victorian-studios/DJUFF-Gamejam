@@ -4,6 +4,11 @@ var slot = preload("res://Game/Scenes/Slot.tscn")
 var slot_list = []
 
 func _ready():
+	$Screens.visible = false
+	$Screens/GameOver.visible = true
+	$Screens/Pause.visible = false
+	$Screens/Victory.visible = false
+
 	var global = $"/root/Global"
 	$Energy.max_value = global.traps_energy
 	$Energy.value = global.traps_energy
@@ -19,8 +24,15 @@ func _ready():
 
 func change_hud(is_night):
 	if is_night:
+		$RichTextLabel.visible = false
 		$Inventory.visible = false
 		$Energy.visible = true
 	else:
+		$RichTextLabel.visible = true
 		$Inventory.visible = true
 		$Energy.visible = false
+
+
+func _on_btn_pressed():
+	print("ads")
+	get_tree().change_scene_to_file("res://Menu/Scenes/Menu.tscn")

@@ -7,12 +7,16 @@ extends Node2D
 @onready var night_day
 @onready var hud_inventory
 
+var current_trap
+
 var spots_dict = {}
 
 var waves
 var day = 1
 
 func _ready():
+	get_tree().paused = false
+	print("new game")
 	$HomePanel.visible = false
 
 	$CamNight.enabled = false
@@ -53,8 +57,16 @@ func _ready():
 		spot.get_node("SpotNumber").text = "[wave]"+str(int(spot.spot_number))+"[/wave]"
 		spot.get_node("OnOff").animation = "empty"
 
-		if spot.get_child_count() > 3:
-			spot.get_node("OnOff").animation = "on"
+		if spot.get_child_count() > 4: #MUDAR
+			for spots_child in spot.get_children():
+				if spots_child is Control and !(spots_child is RichTextLabel):
+					if spots_child.work == true:
+						spot.get_node("OnOff").animation = "on"
+						spot.get_node("SpotTip").animation = "spot_full"
+					
+					else:
+						spot.get_node("OnOff").animation = "off"
+						spot.get_node("SpotTip").animation = "spot_empty"
 		
 		spots_dict[spot.spot_number] = spot
 		spots_count += 1
@@ -65,9 +77,30 @@ func _process(delta):
 	if day_afternoon.is_stopped() == false:
 		if int(day_afternoon.time_left) == day_afternoon.wait_time / 2:
 			animation.play("day_afternoon")
+		if Input.is_action_just_pressed("skip_day"):
+			day_afternoon.stop()
+			$DaysBG/BG_day.visible = false
+			_on_day_afternoon_timeout()
+	
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = !(get_tree().paused)
+		$HUD/Screens.visible = !($HUD/Screens.visible)
+		$HUD/Screens/GameOver.visible = !($HUD/Screens/GameOver.visible)
+		$HUD/Screens/Pause.visible = !($HUD/Screens/Pause.visible)
+	# $Screens.visible = false
+	# $Screens/GameOver.visible = false
+	# $Screens/Pause.visible = false
+
 
 func night(day):
 	$HUD.change_hud(true)
+
+	for spot in $AllTrapsSpots.get_children():
+		for spots_child in spot.get_children():
+			if spots_child is Control and !(spots_child is RichTextLabel):
+				if spots_child.work == true:
+					spot.get_node("OnOff").get_node("PointLight2D").enabled = true
+
 	spawn.spawner(waves["day_"+str(day)])
 
 func add_inventory(item):
@@ -80,6 +113,7 @@ func add_inventory(item):
 
 				if item.is_in_group("Traps"):
 					if item.get_parent().get_parent() is Marker2D:
+						item.get_parent().get_parent().get_node("SpotTip").animation = "spot_empty"
 						item.get_parent().get_parent().get_node("OnOff").animation = "empty"
 						# print()
 						item.get_parent().work = $Home.update_energy(item.get_parent().energy_value)
@@ -112,6 +146,7 @@ func add_inventory(item):
 			
 		if find_slot == false:
 			if item.is_in_group("Traps"):
+				print("tirei rs")
 				selected.animation = item.get_parent().trap_name
 			
 			elif item.is_in_group("Items"):
@@ -128,7 +163,8 @@ func remove_inventory(type):
 				var completed = $Home.update_panel_text(slot.get_child(0).animation)
 
 				if !(completed):
-					slot.get_child(0).animation = "empty"
+					if slot.get_child(0).animation != "Spotlight" and slot.get_child(0).animation != "Turret" and slot.get_child(0).animation != "Thorn" :
+						slot.get_child(0).animation = "empty"
 
 				slot.get_child(0).get_child(0).visible = false
 
@@ -179,6 +215,8 @@ func remove_inventory(type):
 				teste.get_node("OnOff").animation = "on"
 			else:
 				teste.get_node("OnOff").animation = "off"
+				
+			teste.get_node("SpotTip").animation = "spot_full"
 
 			control_trap.global_position = $Player.item.get_parent().global_position
 			# print($Player.item.get_parent().global_position, control_trap.global_position)
@@ -204,6 +242,8 @@ func remove_inventory(type):
 		# 	pass
 
 func _on_day_afternoon_timeout():
+	print("8")
+	# animation.play("day_afternoon")
 	animation.play("afternoon_night")
 	$Player/Camera2D.enabled = false
 	$Player.global_position.x = $HomeNight.global_position.x
@@ -224,12 +264,26 @@ func _on_day_afternoon_timeout():
 # 			spot.get_node("SpotNumber").text = str(int(spot.spot_number))
 
 func _on_night_timeout():
+	for spot in $AllTrapsSpots.get_children():
+		for spots_child in spot.get_children():
+			if spots_child is Control and !(spots_child is RichTextLabel):
+				if spots_child.work == true:
+					spot.get_node("OnOff").get_node("PointLight2D").enabled = false
+
 	$HUD.change_hud(false)
 	animation.play("night_day")
 	$Player/Camera2D.enabled = true
 	$Player.can_control = true
 	$CamNight.enabled = false
 	# configure_traps(false)
+	
+	day += 1
+	if day == 2:
+		get_tree().paused = true
+		$HUD/Screens.visible = true
+		$HUD/Screens/GameOver.visible = false
+		$HUD/Screens/Pause.visible = false
+		$HUD/Screens/Victory.visible = true
 
 func _on_animation_player_animation_finished(anim_name: StringName):
 	if anim_name == "night_day":
@@ -263,21 +317,30 @@ func open_house_panel(type):
 func turn_traps(spot_number):
 	var choosen_spot = spots_dict.get(spot_number)
 	
-	if choosen_spot.get_child_count() < 4: #MUDAR
-		print("NAO TEM ARMADILHA AQUI MERMAO")
+	if choosen_spot.get_child_count() < 5: #MUDAR
+		# print("NAO TEM ARMADILHA AQUI MERMAO")
 		return false
 	else:
 		for spots_child in choosen_spot.get_children():
 			if spots_child is Control and !(spots_child is RichTextLabel) :
-				print(choosen_spot, spots_child)
+				# print(choosen_spot, spots_child)
 				var teste = spots_child.energy_value
+				current_trap = spots_child
 				if spots_child.work == false:
 					teste = spots_child.energy_value * -1
-				print(spots_child.work)
+				# print(spots_child.work)
 				spots_child.work = get_node("Home").update_energy(teste)
 				if spots_child.work == true:
 					choosen_spot.get_node("OnOff").animation = "on"
+					choosen_spot.get_node("OnOff").get_node("PointLight2D").enabled = true
 				else:
 					choosen_spot.get_node("OnOff").animation = "off"
+					choosen_spot.get_node("OnOff").get_node("PointLight2D").enabled = false
 				# print(spots_child.work)
 				return spots_child.work
+
+func game_over():
+	$HUD/Screens.visible = true
+	$HUD/Screens/GameOver.visible = true
+	$HUD/Screens/Pause.visible = false
+	get_tree().paused = true

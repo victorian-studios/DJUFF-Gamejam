@@ -75,6 +75,7 @@ func turn_on_or_off(energy):
 		# work = get_parent().get_node("Home").update_energy(energy)
 	else:
 		# print("AUDIHAISHAIUDHA", energy)
+		get_parent().get_parent().get_parent().current_trap = $"."
 		work = get_parent().get_parent().get_parent().get_node("Home").update_energy(energy)
 	# elif get_parent().get_parent().get_parent().get_node("Home") != null:
 	# 	work = get_parent().get_parent().get_parent().get_node("Home").update_energy(energy)

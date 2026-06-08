@@ -5,6 +5,9 @@ var global
 var total_prices = []
 var trap_complete
 var energy
+var count_traps_energy_list = []
+var count_traps_energy = 0
+var life
 
 func _ready():
 	$Panel/RichTextLabel.text = "[wave]E - View Shop[/wave]"
@@ -17,22 +20,29 @@ func _ready():
 
 	$Panel/RichTextLabel.visible = false
 
+	life = global.home_life
+	
+	$HomeLife.setMaxHearts(life)
+
 func update_energy(en_value):
 	energy = get_parent().get_node("HUD").get_node("Energy")
 
 	if energy.value == 0:
 		if en_value < 0:
-			print("1 ", energy.value," ",en_value)
+			# print("1 ", energy.value," ",en_value)
 			return false
 		else:
-			print("2 ", energy.value," ",en_value)
+			# print("2 ", energy.value," ",en_value)
+			# print(count_traps_energy)
+			if count_traps_energy == total_energy and count_traps_energy_list.find(get_parent().current_trap) == -1:
+				return false
 			return update_text_energy(en_value)
 	else:
 		if (energy.value + en_value) < 0:
-			print("3 ", energy.value," ",en_value)
+			# print("3 ", energy.value," ",en_value)
 			return false
 		else:
-			print("4 ", energy.value," ",en_value)
+			# print("4 ", energy.value," ",en_value)
 			return update_text_energy(en_value)
 
 	# if energy.value + en_value >= 0 and energy.value + en_value <= total_energy:
@@ -64,15 +74,20 @@ func update_energy(en_value):
 func update_text_energy(en_value):
 	# en_value = total_energy + en_value
 	energy.value = energy.value + en_value
-	print(energy.value,"\n************************************")
+	# print(energy.value,"\n************************************")
 	if (energy.value + en_value) > total_energy:
 		energy.value = total_energy
 	energy.get_node("EnergyCount").text = str(int(energy.value))+"/"+str(int(energy.max_value))
 	# return true
 	
 	if en_value < 0:
+		count_traps_energy_list.append(get_parent().current_trap)
+		print(count_traps_energy_list)
+		count_traps_energy += (en_value*-1)
 		return true
 	else:
+		count_traps_energy -= en_value
+		count_traps_energy_list.erase(get_parent().current_trap)
 		return false
 
 func set_panel_text(preparing_trap, price):
@@ -135,3 +150,14 @@ func update_panel_text(item):
 				price["current_qtd"] += 1
 				price["control"].get_child(1).text = str(int(price["current_qtd"]))+" / "+str(int(price["total_qtd"]))
 				return false
+
+func take_damage(damage):
+	if life > 0:
+		if life - damage > 0:
+			life = life - damage
+			$HomeLife.updateHearts(life)
+		else:
+			life = 0
+			$HomeLife.updateHearts(life)
+			$Door.queue_free()
+		

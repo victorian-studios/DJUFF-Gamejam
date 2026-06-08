@@ -26,13 +26,13 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oiein"]
-size = Vector2(866, 608)
+size = Vector2(837, 651)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g5idm"]
-size = Vector2(28, 260)
+size = Vector2(24, 198)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghef2"]
-size = Vector2(34, 261)
+size = Vector2(24, 198)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_g5idm"]
 animations = [{
@@ -64,9 +64,10 @@ collision_layer = 128
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=327657876]
+position = Vector2(12.5, 26.5)
 shape = SubResource("RectangleShape2D_oiein")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=680581234]
+[node name="HomeLife" type="HBoxContainer" parent="." unique_id=680581234]
 offset_left = -420.0
 offset_top = -448.0
 offset_right = 420.0
@@ -75,25 +76,25 @@ theme_override_constants/separation = 40
 alignment = 1
 script = ExtResource("2_oiein")
 
-[node name="Door" type="StaticBody2D" parent="." unique_id=367531628]
-position = Vector2(-430, 171)
+[node name="Door" type="StaticBody2D" parent="." unique_id=367531628 groups=["HomeDestroy"]]
+position = Vector2(-430, 196)
 collision_layer = 64
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=1008841403]
-position = Vector2(14, 2)
+position = Vector2(12, 57)
 shape = SubResource("RectangleShape2D_g5idm")
 
-[node name="Area2D" type="Area2D" parent="Door" unique_id=1610342060]
+[node name="Area2D" type="Area2D" parent="Door" unique_id=1610342060 groups=["HomeDestroy"]]
 collision_layer = 64
-collision_mask = 4
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door/Area2D" unique_id=498325707]
-position = Vector2(14, 1.5)
+position = Vector2(12, 57)
 shape = SubResource("RectangleShape2D_ghef2")
 
 [node name="Panel" type="AnimatedSprite2D" parent="." unique_id=737355150]
-position = Vector2(1.1444092e-05, -28.5)
+position = Vector2(1.1444092e-05, -6.999996)
 scale = Vector2(1.2908164, 1.2908163)
 sprite_frames = SubResource("SpriteFrames_g5idm")
 animation = &"normal"

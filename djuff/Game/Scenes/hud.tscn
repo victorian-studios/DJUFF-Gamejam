@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://c42hdh5v00wmm" path="res://Game/Images/energy_base.png" id="4_5lamd"]
 [ext_resource type="Texture2D" uid="uid://b0difk6xcbruy" path="res://Game/Images/energy_border.png" id="5_fpgx0"]
 [ext_resource type="Texture2D" uid="uid://04aaonf2yvkn" path="res://Game/Images/energy_content.png" id="6_thl5v"]
+[ext_resource type="Texture2D" uid="uid://cyign5ftv4p5t" path="res://Game/Images/panel_screen.png" id="7_fpgx0"]
+[ext_resource type="Texture2D" uid="uid://ceyjife33ijpx" path="res://Menu/Images/button_credits.png" id="8_00s34"]
+[ext_resource type="Texture2D" uid="uid://bocgp45p7xn82" path="res://Menu/Images/button_credits_select.png" id="9_dqole"]
 
 [node name="HUD" type="CanvasLayer" unique_id=2118517463]
 script = ExtResource("1_bamcn")
@@ -78,3 +81,261 @@ bbcode_enabled = true
 text = "[wave]3/3[/wave]"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1561278927]
+anchors_preset = -1
+anchor_left = 0.708
+anchor_top = 0.90500003
+anchor_right = 0.97300005
+anchor_bottom = 0.96400005
+offset_left = -0.35998535
+offset_top = -0.4000244
+offset_right = -0.16015625
+offset_bottom = 12.880005
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 37
+bbcode_enabled = true
+text = "[wave]Press Enter to skip the day![/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Screens" type="Control" parent="." unique_id=309471852]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BG" type="TextureRect" parent="Screens" unique_id=669454260]
+process_mode = 3
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -476.0
+offset_top = -402.0
+offset_right = 476.0
+offset_bottom = 402.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("7_fpgx0")
+
+[node name="GameOver" type="Control" parent="Screens" unique_id=1744748384]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -754.5
+offset_top = -414.25
+offset_right = 754.5
+offset_bottom = 414.25
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="RichTextLabel" parent="Screens/GameOver" unique_id=283089744]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.185
+anchor_top = 0.056
+anchor_right = 0.81500006
+anchor_bottom = 0.268
+offset_left = 0.33499146
+offset_top = -0.14599991
+offset_right = 0.664917
+offset_bottom = 0.21199036
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 125
+bbcode_enabled = true
+text = "[wave]Game Over![/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="RichTextLabel" parent="Screens/GameOver" unique_id=1466746688]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.185
+anchor_top = 0.31800002
+anchor_right = 0.81500006
+anchor_bottom = 0.72900003
+offset_left = 0.33499146
+offset_top = -0.2130127
+offset_right = 0.664917
+offset_bottom = 3.2734985
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "Don't give up player! Try again! You can do it ^^"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Victory" type="Control" parent="Screens" unique_id=123802376]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -754.5
+offset_top = -414.25
+offset_right = 754.5
+offset_bottom = 414.25
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="RichTextLabel" parent="Screens/Victory" unique_id=512076595]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.185
+anchor_top = 0.056
+anchor_right = 0.81500006
+anchor_bottom = 0.268
+offset_left = 0.33499146
+offset_top = -0.14599991
+offset_right = 0.664917
+offset_bottom = 0.21199036
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 125
+bbcode_enabled = true
+text = "[wave]Victory![/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="RichTextLabel" parent="Screens/Victory" unique_id=999151251]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.185
+anchor_top = 0.31800002
+anchor_right = 0.81500006
+anchor_bottom = 0.72900003
+offset_left = 0.33499146
+offset_top = -0.2130127
+offset_right = 0.664917
+offset_bottom = 3.2734985
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "Thanks for play!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pause" type="Control" parent="Screens" unique_id=1198069140]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -754.5
+offset_top = -414.25
+offset_right = 754.5
+offset_bottom = 414.25
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Title" type="RichTextLabel" parent="Screens/Pause" unique_id=1791353749]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.185
+anchor_top = 0.056
+anchor_right = 0.81500006
+anchor_bottom = 0.268
+offset_left = 0.33499146
+offset_top = -0.14599991
+offset_right = 0.664917
+offset_bottom = 0.21199036
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 125
+bbcode_enabled = true
+text = "[wave]Pause[/wave]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Desc" type="RichTextLabel" parent="Screens/Pause" unique_id=359044131]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.185
+anchor_top = 0.31800002
+anchor_right = 0.81500006
+anchor_bottom = 0.72900003
+offset_left = 0.33499146
+offset_top = -0.2130127
+offset_right = 0.664917
+offset_bottom = 3.2734985
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "Do you wanna leave?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Btn" type="TextureButton" parent="Screens" unique_id=236150089]
+process_mode = 3
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.38000003
+anchor_top = 0.70600003
+anchor_right = 0.628
+anchor_bottom = 0.846
+offset_left = -0.6000366
+offset_top = -0.4800415
+offset_right = -175.76001
+offset_bottom = -50.679993
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("8_00s34")
+texture_hover = ExtResource("9_dqole")
+
+[node name="Desc" type="RichTextLabel" parent="Screens/Btn" unique_id=1709235509]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.027
+anchor_top = 0.07300001
+anchor_right = 0.97700006
+anchor_bottom = 0.924
+offset_left = -0.12699604
+offset_top = -0.03966856
+offset_right = -0.07699585
+offset_bottom = 0.00932312
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Screens/Btn" to="." method="_on_btn_pressed"]

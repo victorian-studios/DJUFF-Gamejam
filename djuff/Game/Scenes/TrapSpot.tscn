@@ -1,12 +1,33 @@
 [gd_scene format=3 uid="uid://dm1bk5vs46a38"]
 
 [ext_resource type="Script" uid="uid://b7by5dpol1eey" path="res://Game/Scripts/trap_spot.gd" id="1_yp6eh"]
+[ext_resource type="Texture2D" uid="uid://caccxbsyeepja" path="res://Game/Images/spot_effect.png" id="2_6pfxm"]
 [ext_resource type="Texture2D" uid="uid://em1cwrow8hxo" path="res://Game/Images/off.png" id="2_c54qo"]
 [ext_resource type="Texture2D" uid="uid://bsrmgxocsi4om" path="res://Game/Images/empty.png" id="2_e2hig"]
 [ext_resource type="Texture2D" uid="uid://b11sqf6wunvvl" path="res://Game/Images/on.png" id="3_e2hig"]
+[ext_resource type="Texture2D" uid="uid://ddbjsm0r61ufu" path="res://Game/Images/spot_effect2.png" id="3_jf1oe"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1k35o"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6pfxm")
+}],
+"loop": true,
+"name": &"spot_empty",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_jf1oe")
+}],
+"loop": true,
+"name": &"spot_full",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pffa6"]
-size = Vector2(90, 69)
+size = Vector2(100, 222)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yp6eh"]
 animations = [{
@@ -35,15 +56,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_jf1oe"]
+offsets = PackedFloat32Array(0, 0.5020243, 0.9352227)
+colors = PackedColorArray(1, 1, 0.65882355, 1, 0.9843137, 0.972549, 0.6509804, 0.7137255, 0.9843137, 0.972549, 0.6509804, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1k35o"]
+gradient = SubResource("Gradient_jf1oe")
+width = 100
+height = 100
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.9017094, 0.87606835)
+
 [node name="TrapSpot" type="Marker2D" unique_id=2001169031]
 script = ExtResource("1_yp6eh")
+
+[node name="SpotTip" type="AnimatedSprite2D" parent="." unique_id=1971268608]
+position = Vector2(0, -138)
+sprite_frames = SubResource("SpriteFrames_1k35o")
+animation = &"spot_empty"
+autoplay = "spot_empty"
 
 [node name="AreaTrapSpot2" type="Area2D" parent="." unique_id=2000723226 groups=["TrapSpot"]]
 collision_layer = 256
 collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaTrapSpot2" unique_id=1500052746]
-position = Vector2(0, -22.5)
+position = Vector2(0, -99)
 shape = SubResource("RectangleShape2D_pffa6")
 
 [node name="SpotNumber" type="RichTextLabel" parent="." unique_id=1866650414]
@@ -62,3 +101,8 @@ vertical_alignment = 1
 position = Vector2(59, -611)
 sprite_frames = SubResource("SpriteFrames_yp6eh")
 animation = &"empty"
+
+[node name="PointLight2D" type="PointLight2D" parent="OnOff" unique_id=969528395]
+position = Vector2(6, 4)
+energy = 2.0
+texture = SubResource("GradientTexture2D_1k35o")
