@@ -113,18 +113,6 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Fade:self_modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_wtnjr"]
 resource_name = "close_credits"
@@ -467,8 +455,38 @@ text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="TextureButton" type="TextureButton" parent="." unique_id=815536714]
+offset_left = 1667.0
+offset_top = 820.0
+offset_right = 2160.0
+offset_bottom = 1330.0
+scale = Vector2(0.5, 0.5)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("13_wtnjr")
+texture_hover = ExtResource("14_co3wy")
+
+[node name="Title" type="RichTextLabel" parent="." unique_id=154680274]
+offset_right = 1922.0
+offset_bottom = 622.0
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/normal_font_size = 110
+text = "Werewolves
+vs. 
+Scientist"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Title2" type="RichTextLabel" parent="." unique_id=652536045]
+offset_top = 999.0
+offset_right = 274.0
+offset_bottom = 1079.0
+theme_override_constants/outline_size = 30
+theme_override_font_sizes/normal_font_size = 50
+text = "Prototype"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Screens" type="Control" parent="." unique_id=1095493538]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
@@ -477,6 +495,7 @@ size_flags_vertical = 4
 mouse_filter = 2
 
 [node name="HowToPlay" type="Control" parent="Screens" unique_id=2108465643]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -522,9 +541,9 @@ Controls:
 [ul]
 [u]E[/u] → Interact
 (Day only) [u]Enter[/u] → Skip to night
-(Day only) [u]A[/u], [u]D[/u], [u]Space[/u] → Move the character
+[u]A[/u], [u]D[/u], [u]Space[/u] → Move the character or Camera at night
 [u]Esc[/u] → Pause the game
-(Night only) [u]1[/u], [u]2[/u], [u]3[/u], [u]4[/u], [u]5[/u], [u]6[/u], [u]7[/u], [u]8[/u], [u]9[/u] → Toggle traps on or off
+(Night only) [u]1[/u], [u]2[/u], [u]3[/u], [u]4[/u], [u]5[/u], [u]6[/u], [u]7[/u], [u]8[/u], [u]9[/u] → Toggle traps ON or OFF
 [/ul]"
 vertical_alignment = 1
 
@@ -582,7 +601,7 @@ anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 485.0
-offset_top = 314.0
+offset_top = 281.0
 offset_right = -485.0
 offset_bottom = -145.0
 theme_override_font_sizes/normal_font_size = 40
@@ -594,7 +613,10 @@ Programmer and Artist
 Game designer and Programmer
 [hr]
 [ul][wave]Musics and SFX[/wave][/ul]
-None :("
+Halloween by the mountain (Pixabay)
+Nature ambience by u vr5icvkppa (Pixabay)
+Wolf howl by freesound_community (Pixabay)
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -620,45 +642,14 @@ libraries/ = SubResource("AnimationLibrary_wtnjr")
 speed_scale = 2.0
 
 [node name="Fade" type="Sprite2D" parent="." unique_id=335832378]
-visible = false
+self_modulate = Color(1, 1, 1, 0)
 position = Vector2(960, 540)
 texture = ExtResource("12_b8cl7")
-
-[node name="TextureButton" type="TextureButton" parent="." unique_id=815536714]
-offset_left = 1667.0
-offset_top = 820.0
-offset_right = 2160.0
-offset_bottom = 1330.0
-scale = Vector2(0.5, 0.5)
-mouse_default_cursor_shape = 2
-texture_normal = ExtResource("13_wtnjr")
-texture_hover = ExtResource("14_co3wy")
-
-[node name="Title" type="RichTextLabel" parent="." unique_id=154680274]
-offset_right = 1922.0
-offset_bottom = 622.0
-theme_override_constants/outline_size = 40
-theme_override_font_sizes/normal_font_size = 110
-text = "Werewolves
-vs. 
-Scientist"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Title2" type="RichTextLabel" parent="." unique_id=652536045]
-offset_top = 999.0
-offset_right = 274.0
-offset_bottom = 1079.0
-theme_override_constants/outline_size = 30
-theme_override_font_sizes/normal_font_size = 50
-text = "Prototype"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="pressed" from="Botoes/BotoesContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Botoes/BotoesContainer/HowToPlay" to="." method="_on_how_to_play_pressed"]
 [connection signal="pressed" from="Botoes/BotoesContainer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="pressed" from="Screens/HowToPlay/CloseHtp" to="." method="_on_close_htp_pressed"]
 [connection signal="pressed" from="Screens/Credits/CloseCredits" to="." method="_on_close_credits_pressed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
-[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]

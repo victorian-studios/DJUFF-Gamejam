@@ -15,6 +15,7 @@ func spawner(enemies):
 			
 			enemy_child.global_position = position
 			get_parent().add_child(enemy_child)
+			get_parent().enemies_list.append(enemy_child)
 			enemy_child.setup(status)
 
 			# TIRAR DPS

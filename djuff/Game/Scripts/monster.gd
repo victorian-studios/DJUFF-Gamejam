@@ -48,6 +48,9 @@ func monster_take_damage(body):
 			life = life - body.damage
 			$Monster_life.updateHearts(life)
 		else:
+			if get_parent().enemies_list.find($".") != -1:
+				get_parent().enemies_list.erase((get_parent().enemies_list[get_parent().enemies_list.find($".")]))
+				# await get_tree().create_timer(2).timeout
 			queue_free()
 
 func _on_area_2d_body_entered(body: Node2D):
@@ -63,4 +66,7 @@ func _on_area_2d_area_entered(area):
 				life = life - (area.get_parent()).damage
 				$Monster_life.updateHearts(life)
 			else:
+				if get_parent().enemies_list.find($".") != -1:
+					get_parent().enemies_list.erase((get_parent().enemies_list[get_parent().enemies_list.find($".")]))
+					# await get_tree().create_timer(2).timeout
 				queue_free()

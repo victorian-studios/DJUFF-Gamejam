@@ -7,6 +7,10 @@ extends Node2D
 @onready var night_day
 @onready var hud_inventory
 
+var audio_day = "res://Game/Musics and Sounds/nature_ambience_by_u_vr5icvkppa.mp3"
+var audio_night = "res://Game/Musics and Sounds/halloween_by_the_mountain.mp3"
+var audio_werewolf = "res://Game/Musics and Sounds/wolf_howl_by_freesound_community.mp3"
+
 var current_trap
 
 var spots_dict = {}
@@ -14,7 +18,12 @@ var spots_dict = {}
 var waves
 var day = 1
 
+var enemies_list = []
+
 func _ready():
+	$Music.volume_db = -10
+	$Music.stream = load(audio_day)
+	$Music.play()
 	get_tree().paused = false
 	print("new game")
 	$HomePanel.visible = false
@@ -82,6 +91,13 @@ func _process(delta):
 			$DaysBG/BG_day.visible = false
 			_on_day_afternoon_timeout()
 	
+	if night_day.is_stopped() == false:
+		# print(enemies_list)
+		if enemies_list == []:
+			night_day.stop()
+			_on_night_timeout()
+		# if enemies_list == []:
+
 	if Input.is_action_just_pressed("pause"):
 		get_tree().paused = !(get_tree().paused)
 		$HUD/Screens.visible = !($HUD/Screens.visible)
@@ -242,7 +258,8 @@ func remove_inventory(type):
 		# 	pass
 
 func _on_day_afternoon_timeout():
-	print("8")
+	$Music.stream = load(audio_werewolf)
+	$Music.play()
 	# animation.play("day_afternoon")
 	animation.play("afternoon_night")
 	$Player/Camera2D.enabled = false
@@ -254,16 +271,11 @@ func _on_day_afternoon_timeout():
 	# configure_traps(true)
 	$HomePanel.visible = false
 
-# func configure_traps(is_night):
-
-# 	for spot in $AllTrapsSpots.get_children():
-# 		if spot.get_child_count() > 2:
-# 			# var trap = spot
-# 			# print(spot)
-# 			# trap.get_node("SpotNumber").visible = is_night
-# 			spot.get_node("SpotNumber").text = str(int(spot.spot_number))
-
 func _on_night_timeout():
+	
+	$Music.volume_db = -10
+	$Music.stream = load(audio_day)
+	$Music.play()
 	for spot in $AllTrapsSpots.get_children():
 		for spots_child in spot.get_children():
 			if spots_child is Control and !(spots_child is RichTextLabel):
@@ -278,7 +290,7 @@ func _on_night_timeout():
 	# configure_traps(false)
 	
 	day += 1
-	if day == 2:
+	if day == 7:
 		get_tree().paused = true
 		$HUD/Screens.visible = true
 		$HUD/Screens/GameOver.visible = false
@@ -344,3 +356,10 @@ func game_over():
 	$HUD/Screens/GameOver.visible = true
 	$HUD/Screens/Pause.visible = false
 	get_tree().paused = true
+
+
+func _on_music_finished():
+	if $Music.stream == preload("res://Game/Musics and Sounds/wolf_howl_by_freesound_community.mp3"):
+		$Music.volume_db = -25
+		$Music.stream = load(audio_night)
+		$Music.play()

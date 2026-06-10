@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bdvp4x1gbkkkn"
+path="res://.godot/imported/nature_ambience_by_u_vr5icvkppa.mp3-f71099859a32b28b6ef60a53e03fc72d.mp3str"
+
+[deps]
+
+source_file="res://Game/Musics and Sounds/nature_ambience_by_u_vr5icvkppa.mp3"
+dest_files=["res://.godot/imported/nature_ambience_by_u_vr5icvkppa.mp3-f71099859a32b28b6ef60a53e03fc72d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

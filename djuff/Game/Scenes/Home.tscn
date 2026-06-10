@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dmvy2nb5b04qy" path="res://Game/Scripts/home.gd" id="1_g5idm"]
 [ext_resource type="Script" uid="uid://bqx1bfcl30twp" path="res://Game/Scripts/home_life.gd" id="2_oiein"]
 [ext_resource type="Texture2D" uid="uid://cp57jo1ens20f" path="res://Game/Images/home_panel_small.png" id="4_ghef2"]
+[ext_resource type="Texture2D" uid="uid://7dxnfv4pj3h7" path="res://Game/Images/door.png" id="4_y1lpq"]
 [ext_resource type="Texture2D" uid="uid://nbls543vm5uk" path="res://Game/Images/wood_shop.png" id="5_r6hok"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8o5p1"]
@@ -81,6 +82,10 @@ position = Vector2(-430, 196)
 collision_layer = 64
 collision_mask = 5
 
+[node name="Sprite2D" type="Sprite2D" parent="Door" unique_id=1477266106]
+position = Vector2(11, 56)
+texture = ExtResource("4_y1lpq")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=1008841403]
 position = Vector2(12, 57)
 shape = SubResource("RectangleShape2D_g5idm")
@@ -94,7 +99,7 @@ position = Vector2(12, 57)
 shape = SubResource("RectangleShape2D_ghef2")
 
 [node name="Panel" type="AnimatedSprite2D" parent="." unique_id=737355150]
-position = Vector2(1.1444092e-05, -6.999996)
+position = Vector2(1.1444092e-05, 95.000015)
 scale = Vector2(1.2908164, 1.2908163)
 sprite_frames = SubResource("SpriteFrames_g5idm")
 animation = &"normal"

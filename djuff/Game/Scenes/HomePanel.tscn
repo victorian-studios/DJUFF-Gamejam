@@ -43,9 +43,9 @@ texture = ExtResource("1_b5pbg")
 [node name="ImageShop" type="TextureRect" parent="." unique_id=1834701908]
 layout_mode = 0
 offset_left = 1.0
-offset_top = -412.0
+offset_top = -387.0
 offset_right = 376.0
-offset_bottom = 50.0
+offset_bottom = 75.0
 mouse_filter = 0
 texture = ExtResource("3_abrqe")
 
@@ -189,6 +189,23 @@ offset_bottom = 391.0
 mouse_default_cursor_shape = 2
 texture_normal = ExtResource("11_7fsd7")
 texture_hover = ExtResource("12_n6k3h")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PrepareTrap" unique_id=2055049937]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.023000002
+anchor_top = 0.069000006
+anchor_right = 0.97300005
+anchor_bottom = 0.93100005
+offset_left = 0.076999664
+offset_top = 0.030999184
+offset_right = 0.12698364
+offset_bottom = -0.03100586
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 40
+text = "Prepare Trap"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="Close" to="." method="_on_close_pressed"]
 [connection signal="pressed" from="RightShop" to="." method="_on_right_shop_pressed"]

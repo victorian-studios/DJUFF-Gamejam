@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cx278dwtxpkya"
+path="res://.godot/imported/wolf_howl_by_freesound_community.mp3-022d06e937f7c221a854fe7a55db225b.mp3str"
+
+[deps]
+
+source_file="res://Game/Musics and Sounds/wolf_howl_by_freesound_community.mp3"
+dest_files=["res://.godot/imported/wolf_howl_by_freesound_community.mp3-022d06e937f7c221a854fe7a55db225b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
